@@ -188,9 +188,9 @@ def main():
   <ul class="wd-category-filter-nav">
     <li><button type="button" class="wd-category-filter-btn active" data-cat="all" onclick="window.DeshiMart.filterCategory('all', this); return false;">সব পণ্য</button></li>
     <li><button type="button" class="wd-category-filter-btn" data-cat="ghee" onclick="window.DeshiMart.filterCategory('ghee', this); return false;">গাওয়া ঘি</button></li>
+    <li><button type="button" class="wd-category-filter-btn" data-cat="oil" onclick="window.DeshiMart.filterCategory('oil', this); return false;">খাঁটি তেল</button></li>
     <li><button type="button" class="wd-category-filter-btn" data-cat="honey" onclick="window.DeshiMart.filterCategory('honey', this); return false;">খাঁটি মধু</button></li>
     <li><button type="button" class="wd-category-filter-btn" data-cat="dates" onclick="window.DeshiMart.filterCategory('dates', this); return false;">খেজুর</button></li>
-    <li><button type="button" class="wd-category-filter-btn" data-cat="oil" onclick="window.DeshiMart.filterCategory('oil', this); return false;">খাঁটি তেল</button></li>
     <li><button type="button" class="wd-category-filter-btn" data-cat="tea" onclick="window.DeshiMart.filterCategory('tea', this); return false;">চা পাতা</button></li>
     <li><button type="button" class="wd-category-filter-btn" data-cat="nuts" onclick="window.DeshiMart.filterCategory('nuts', this); return false;">বাদাম ও বীজ</button></li>
     <li><button type="button" class="wd-category-filter-btn" data-cat="spices" onclick="window.DeshiMart.filterCategory('spices', this); return false;">মসলা</button></li>
@@ -208,6 +208,23 @@ def main():
                         532, 450, 527, 529, 540, 531, 446, 535, 463
                     ]
                     for idx, pid in enumerate(ordered_ids, 1):
+                        if pid in prod_map:
+                            grid_card = BeautifulSoup(render_card_html(prod_map[pid], idx, is_carousel=False), 'html.parser')
+                            p_grid.append(grid_card)
+
+        # 6e. Section 'Top Selling Products' -> Render clean 4-column cards (no awkward empty whitespace!)
+        elif 'Top Selling Products' in h.get_text():
+            parent = h.find_parent('div', class_='elementor-element')
+            while parent and not parent.find(class_='products'):
+                parent = parent.parent
+            if parent:
+                p_grid = parent.find(class_='products')
+                if p_grid:
+                    p_grid['class'] = [c for c in p_grid.get('class', []) if c != 'grid-columns-2'] + ['grid-columns-4', 'wd-top-selling-grid']
+                    p_grid['style'] = '--wd-col-lg:4;--wd-col-md:3;--wd-col-sm:2;--wd-gap-lg:20px;--wd-gap-sm:10px;'
+                    p_grid.clear()
+                    top_selling_ids = [533, 530, 534, 532]
+                    for idx, pid in enumerate(top_selling_ids, 1):
                         if pid in prod_map:
                             grid_card = BeautifulSoup(render_card_html(prod_map[pid], idx, is_carousel=False), 'html.parser')
                             p_grid.append(grid_card)
@@ -643,9 +660,61 @@ def main():
 }
 
 /* ========================================================
+   TOP SELLING PRODUCTS GRID - 4 COLUMNS (NO EMPTY VOID)
+======================================================== */
+.elementor-element-1fc9550 {
+  margin-top: 40px !important;
+  margin-bottom: 30px !important;
+}
+
+.elementor-element-57a3ae0 {
+  margin-bottom: 24px !important;
+  text-align: center !important;
+}
+.elementor-element-57a3ae0 .elementor-heading-title {
+  text-align: center !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: #1e293b !important;
+  position: relative !important;
+  display: inline-block !important;
+  padding-bottom: 8px !important;
+}
+.elementor-element-57a3ae0 .elementor-heading-title::after {
+  content: "" !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 48px !important;
+  height: 3px !important;
+  background-color: #f47b20 !important;
+  border-radius: 2px !important;
+}
+
+.wd-top-selling-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 16px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 1024px) {
+  .wd-top-selling-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px !important;
+  }
+}
+
+/* ========================================================
    FIX 4: MOBILE RESPONSIVE (MAX-WIDTH: 768PX)
 ======================================================== */
 @media (max-width: 768px) {
+  .wd-top-selling-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
   /* Exactly 2 products per row in carousels */
   .wd-carousel-container,
   .wd-carousel-inner,

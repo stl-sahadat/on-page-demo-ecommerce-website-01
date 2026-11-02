@@ -831,9 +831,61 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 }
 
 /* ========================================================
+   TOP SELLING PRODUCTS GRID - 4 COLUMNS (NO EMPTY VOID)
+======================================================== */
+.elementor-element-1fc9550 {
+  margin-top: 40px !important;
+  margin-bottom: 30px !important;
+}
+
+.elementor-element-57a3ae0 {
+  margin-bottom: 24px !important;
+  text-align: center !important;
+}
+.elementor-element-57a3ae0 .elementor-heading-title {
+  text-align: center !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: #1e293b !important;
+  position: relative !important;
+  display: inline-block !important;
+  padding-bottom: 8px !important;
+}
+.elementor-element-57a3ae0 .elementor-heading-title::after {
+  content: "" !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 48px !important;
+  height: 3px !important;
+  background-color: #f47b20 !important;
+  border-radius: 2px !important;
+}
+
+.wd-top-selling-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 16px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 1024px) {
+  .wd-top-selling-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px !important;
+  }
+}
+
+/* ========================================================
    FIX 4: MOBILE RESPONSIVE (MAX-WIDTH: 768PX)
 ======================================================== */
 @media (max-width: 768px) {
+  .wd-top-selling-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
   /* Exactly 2 products per row in carousels */
   .wd-carousel-container,
   .wd-carousel-inner,
@@ -1643,198 +1695,99 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 <div class="elementor-element elementor-element-a461550 wd-width-100 elementor-widget elementor-widget-wd_products" data-e-type="widget" data-element_type="widget" data-id="a461550" data-widget_type="wd_products.default">
 <div class="elementor-widget-container">
 <link href="./wp-content/themes/woodmart/css/parts/woo-product-loop.css?ver=8.5.3" id="wd-product-loop-css" media="all" rel="stylesheet" type="text/css"/> <link href="./wp-content/themes/woodmart/css/parts/woo-loop-prod-el-base.css?ver=8.5.3" id="wd-woo-loop-prod-el-base-css" media="all" rel="stylesheet" type="text/css"/> <link href="./wp-content/themes/woodmart/css/parts/woo-loop-prod-builder.css?ver=8.5.3" id="wd-woo-loop-prod-builder-css" media="all" rel="stylesheet" type="text/css"/> <link href="./wp-content/themes/woodmart/css/parts/block-icon.css?ver=8.5.3" id="wd-block-icon-css" media="all" rel="stylesheet" type="text/css"/> <link href="./wp-content/themes/woodmart/css/parts/mod-transform.css?ver=8.5.3" id="wd-mod-transform-css" media="all" rel="stylesheet" type="text/css"/> <link href="./wp-content/themes/woodmart/css/parts/block-container.css?ver=8.5.3" id="wd-block-container-css" media="all" rel="stylesheet" type="text/css"/> <link href="./wp-content/themes/woodmart/css/parts/woo-mod-loop-prod-btn-full-width-builder.css?ver=8.5.3" id="wd-woo-mod-loop-prod-btn-full-width-builder-css" media="all" rel="stylesheet" type="text/css"/> <link href="./wp-content/themes/woodmart/css/parts/woo-mod-loop-prod-add-btn-replace.css?ver=8.5.3" id="wd-woo-mod-loop-prod-add-btn-replace-css" media="all" rel="stylesheet" type="text/css"/> <link href="./wp-content/themes/woodmart/css/parts/mod-animations-transform-base.css?ver=8.5.3" id="wd-mod-animations-transform-base-css" media="all" rel="stylesheet" type="text/css"/> <link href="./wp-content/themes/woodmart/css/parts/mod-animations-transform.css?ver=8.5.3" id="wd-mod-animations-transform-css" media="all" rel="stylesheet" type="text/css"/> <link href="./wp-content/uploads/2026/09/xts-blocks-658-1789177971.css?ver=8.5.3" id="xts-style-blocks-658-css" media="all" rel="stylesheet" type="text/css"/> <div class="wd-products-element">
-<div class="products wd-products grid-columns-2 elements-grid wd-grid-g wd-loop-builder-on wd-loop-item-wrap-658" data-atts='{"speed":null,"slides_per_view":null,"wrap":null,"autoplay":null,"autoheight":null,"hide_pagination_control":null,"dynamic_pagination_control":null,"hide_prev_next_buttons":null,"carousel_arrows_position":null,"hide_scrollbar":null,"scroll_per_page":null,"center_mode":null,"spacing":"","carousel_sync":null,"sync_parent_id":null,"sync_child_id":null,"sync_group_id":null,"scroll_carousel_init":null,"disable_overflow_carousel":null,"include":null,"meta_key":null,"shop_tools":null,"ajax_recently_viewed":null,"pagination_arrows_position":null,"items_per_page":4,"list_spacing":null,"columns":{"unit":"px","size":2,"sizes":[]},"columns_mobile":{"unit":"px","size":1,"sizes":[]},"products_masonry":"","products_different_sizes":"","product_quantity":null,"product_hover":"custom","product_custom_hover":"658","sale_countdown":null,"stretch_product":null,"stock_progress_bar":null,"highlighted_products":null,"products_divider":null,"products_bordered_grid":null,"products_bordered_grid_style":null,"products_with_background":null,"products_shadow":null,"products_color_scheme":null,"img_size":"large","img_size_custom":null,"grid_gallery":null,"grid_gallery_control":null,"grid_gallery_enable_arrows":null,"elementor":true,"force_not_ajax":"no"}' data-columns="2" data-paged="1" data-source="shortcode" style="--wd-col-lg:2;--wd-col-md:2;--wd-col-sm:1;--wd-gap-lg:20px;--wd-gap-sm:10px;">
-<div class="wd-product wd-col wd-loop-item-658 wd-hover-parent product type-product post-533 status-publish instock product_cat-ghee has-post-thumbnail sale shipping-taxable purchasable product-type-variable has-default-attributes" data-category="ghee" data-id="533" data-loop="1">
+<div class="products wd-products elements-grid wd-grid-g wd-loop-builder-on wd-loop-item-wrap-658 grid-columns-4 wd-top-selling-grid" data-atts='{"speed":null,"slides_per_view":null,"wrap":null,"autoplay":null,"autoheight":null,"hide_pagination_control":null,"dynamic_pagination_control":null,"hide_prev_next_buttons":null,"carousel_arrows_position":null,"hide_scrollbar":null,"scroll_per_page":null,"center_mode":null,"spacing":"","carousel_sync":null,"sync_parent_id":null,"sync_child_id":null,"sync_group_id":null,"scroll_carousel_init":null,"disable_overflow_carousel":null,"include":null,"meta_key":null,"shop_tools":null,"ajax_recently_viewed":null,"pagination_arrows_position":null,"items_per_page":4,"list_spacing":null,"columns":{"unit":"px","size":2,"sizes":[]},"columns_mobile":{"unit":"px","size":1,"sizes":[]},"products_masonry":"","products_different_sizes":"","product_quantity":null,"product_hover":"custom","product_custom_hover":"658","sale_countdown":null,"stretch_product":null,"stock_progress_bar":null,"highlighted_products":null,"products_divider":null,"products_bordered_grid":null,"products_bordered_grid_style":null,"products_with_background":null,"products_shadow":null,"products_color_scheme":null,"img_size":"large","img_size_custom":null,"grid_gallery":null,"grid_gallery_control":null,"grid_gallery_enable_arrows":null,"elementor":true,"force_not_ajax":"no"}' data-columns="2" data-paged="1" data-source="shortcode" style="--wd-col-lg:4;--wd-col-md:3;--wd-col-sm:2;--wd-gap-lg:20px;--wd-gap-sm:10px;"><div class="wd-product wd-col wd-loop-item-814 wd-hover-parent product type-product post-533 status-publish instock product_cat-ghee has-post-thumbnail shipping-taxable purchasable product-type-variable" data-category="ghee" data-id="533" data-loop="1">
 <div class="wd-product-wrapper wd-entry-content">
-<div class="wp-block-wd-container wd-dir-row wd-align-is-lg-center wd-animation wd-transform wd-animation-zoom-in wd_delay_20 wd-7b9a3070">
-<div class="wp-block-wd-container wd-dir-col wd-e78a4ce6 wd-custom-width">
-<div class="wp-block-wd-icon wd-363b656d wd-align-s-start"><svg aria-hidden="true" class="wd-svg-icon" fill="none" height="38" viewbox="0 0 160 38" width="160" xmlns="http://www.w3.org/2000/svg">
-<rect fill="#FF4545" height="38" rx="7" width="160"></rect>
-<path d="M22.5 9C22.5 9 24 14 20.8 17.2C19 19 18.5 20.5 18.5 22C18.5 25 20.8 27.5 23.8 27.5C27.2 27.5 29.5 24.8 29.5 21.5C29.5 16.8 25.8 11.5 22.5 9Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-<path d="M22 23C22 21.5 22.8 20.5 24.2 19.3C24.6 21 25.5 21.8 25.5 23C25.5 24.2 24.6 25 23.6 25C22.7 25 22 24.2 22 23Z" fill="white"></path>
-<text fill="white" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" x="38" y="25">Best Selling</text>
-</svg></div>
-<div class="wd-loop-prod-thumb wd-product-thumb wd-c2247e36 wd-hover-zoom">
+<div class="product-card wd-custom-card-fixed">
+<div class="wd-card-badge-pill">Best Selling</div>
+<div class="wd-loop-prod-thumb">
 <a aria-label="ACME প্রিমিয়াম বিশুদ্ধ ঘি" class="wd-product-img-link" href="javascript:void(0)" onclick="window.DeshiMart.openQuickView(533); return false;" tabindex="-1">
-<img alt="" class="attachment-large size-large" decoding="async" height="600" loading="lazy" sizes="auto, (max-width: 600px) 100vw, 600px" src="./wp-content/uploads/2026/08/1-2-1-1.webp" srcset="./wp-content/uploads/2026/08/1-2-1-1.webp 600w, ./wp-content/uploads/2026/08/1-2-1-1-300x300.webp 300w, ./wp-content/uploads/2026/08/1-2-1-1-148x148.webp 148w, ./wp-content/uploads/2026/08/1-2-1-1-150x150.webp 150w" width="600"/> </a>
-<div class="wd-product-img-hover hover-img">
-<img alt="" class="attachment-large size-large" decoding="async" height="600" loading="lazy" sizes="auto, (max-width: 600px) 100vw, 600px" src="./wp-content/uploads/2026/08/1-2-1-1.webp" srcset="./wp-content/uploads/2026/08/1-2-1-1.webp 600w, ./wp-content/uploads/2026/08/1-2-1-1-300x300.webp 300w, ./wp-content/uploads/2026/08/1-2-1-1-148x148.webp 148w, ./wp-content/uploads/2026/08/1-2-1-1-150x150.webp 150w" width="600"/> </div>
-</div>
-</div>
-<div class="wp-block-wd-container wd-dir-col wd-align-is-lg-center wd-a6196ec8 wd-custom-width">
-<div class="wp-block-wd-container wd-dir-col wd-41d5a3a7"> <div class="wd-quick-view-btn wd-quick-view-icon wd-loop-prod-btn wd-f3598456 wd-action-btn wd-style-icon">
-<a class="open-quick-view wd-tooltip wd-tooltip-top" data-id="533" href="javascript:void(0)" onclick="window.DeshiMart.openQuickView(533); return false;" rel="nofollow">
-<span class="wd-action-icon"></span>
-<span class="wd-action-text">
-						Quick view					</span>
+<img alt="ACME প্রিমিয়াম বিশুদ্ধ ঘি" decoding="async" loading="lazy" src="./wp-content/uploads/2026/08/1-2-1-1.webp"/>
 </a>
 </div>
-<h3 class="wd-loop-prod-title wd-entities-title wd-b31e67b7">
-<a href="javascript:void(0)" onclick="window.DeshiMart.openQuickView(533); return false;">
-				ACME প্রিমিয়াম বিশুদ্ধ ঘি			</a>
-</h3>
-<div class="wd-loop-prod-price wd-70452500">
-<span class="price"><span aria-hidden="true" class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" dir="auto" translate="no">৳ </span>350</bdi></span> <span aria-hidden="true">–</span> <span aria-hidden="true" class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" dir="auto" translate="no">৳ </span>700</bdi></span><span class="screen-reader-text">Price range: ৳ 350 through ৳ 700</span></span>
+<div class="wd-card-body">
+<div class="wd-loop-prod-title">
+<h3><a href="javascript:void(0)" onclick="window.DeshiMart.openQuickView(533); return false;">ACME প্রিমিয়াম বিশুদ্ধ ঘি</a></h3>
 </div>
+<div class="wd-loop-prod-price">
+<span class="price"><del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">৳ </span>450</bdi></span></del> <ins><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">৳ </span>350</bdi></span></ins></span>
 </div>
-<div class="wp-block-wd-container wd-dir-row wd-90eb1c9a">
-<div class="wp-block-wd-container wd-dir-row wd-4d11bc57"> <div class="wd-add-btn-wrapp wd-6f881de1">
-<div class="wd-add-btn wd-loop-prod-btn wd-add-btn-replace wd-stretched">
-<a aria-describedby="woocommerce_loop_add_to_cart_link_describedby_533" aria-label="Select options for “ACME প্রিমিয়াম বিশুদ্ধ ঘি”" class="button product_type_variable add_to_cart_button add-to-cart-loop" data-product_id="533" data-product_sku="" data-quantity="1" href="javascript:void(0)" onclick="window.DeshiMart.addProductToCartFromCard(533, this); return false;" rel=""><span class="wd-action-icon"><span class="wd-check-icon"></span></span><span class="wd-action-text">Select options</span></a> <span class="screen-reader-text" id="woocommerce_loop_add_to_cart_link_describedby_533">
-		This product has multiple variants. The options may be chosen on the product page	</span>
-</div>
-</div>
-</div>
-<div class="wp-block-wd-container wd-dir-row wd-494622d1"><a class="isl-loop-buy-now" href="javascript:void(0)" onclick="window.DeshiMart.quickBuyNow(533); return false;">Buy Now</a>
+<div class="product-card-btn-row">
+<a aria-label="Add to cart" class="button product_type_variable add_to_cart_button" href="javascript:void(0)" onclick="window.DeshiMart.addProductToCartFromCard(533, this); return false;" tabindex="-1"><span>অ্যাড টু কার্ট</span></a>
+<a aria-label="Buy now" class="button product_type_variable isl-loop-buy-now" href="javascript:void(0)" onclick="window.DeshiMart.quickBuyNow(533); return false;" tabindex="-1"><span>অর্ডার করুন</span></a>
 </div>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="wd-product wd-col wd-loop-item-658 wd-hover-parent product type-product post-530 status-publish instock product_cat-dates has-post-thumbnail sale shipping-taxable purchasable product-type-variable has-default-attributes" data-category="dates" data-id="530" data-loop="2">
+</div><div class="wd-product wd-col wd-loop-item-814 wd-hover-parent product type-product post-530 status-publish instock product_cat-dates has-post-thumbnail shipping-taxable purchasable product-type-variable" data-category="dates" data-id="530" data-loop="2">
 <div class="wd-product-wrapper wd-entry-content">
-<div class="wp-block-wd-container wd-dir-row wd-align-is-lg-center wd-animation wd-transform wd-animation-zoom-in wd_delay_20 wd-7b9a3070">
-<div class="wp-block-wd-container wd-dir-col wd-e78a4ce6 wd-custom-width">
-<div class="wp-block-wd-icon wd-363b656d wd-align-s-start"><svg aria-hidden="true" class="wd-svg-icon" fill="none" height="38" viewbox="0 0 160 38" width="160" xmlns="http://www.w3.org/2000/svg">
-<rect fill="#FF4545" height="38" rx="7" width="160"></rect>
-<path d="M22.5 9C22.5 9 24 14 20.8 17.2C19 19 18.5 20.5 18.5 22C18.5 25 20.8 27.5 23.8 27.5C27.2 27.5 29.5 24.8 29.5 21.5C29.5 16.8 25.8 11.5 22.5 9Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-<path d="M22 23C22 21.5 22.8 20.5 24.2 19.3C24.6 21 25.5 21.8 25.5 23C25.5 24.2 24.6 25 23.6 25C22.7 25 22 24.2 22 23Z" fill="white"></path>
-<text fill="white" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" x="38" y="25">Best Selling</text>
-</svg></div>
-<div class="wd-loop-prod-thumb wd-product-thumb wd-c2247e36 wd-hover-zoom">
+<div class="product-card wd-custom-card-fixed">
+<div class="wd-card-badge-pill">Best Selling</div>
+<div class="wd-loop-prod-thumb">
 <a aria-label="অর্গানিক ফ্রেশ কালমি খেজুর" class="wd-product-img-link" href="javascript:void(0)" onclick="window.DeshiMart.openQuickView(530); return false;" tabindex="-1">
-<img alt="" class="attachment-large size-large" decoding="async" height="400" loading="lazy" sizes="auto, (max-width: 400px) 100vw, 400px" src="./wp-content/uploads/2026/08/kalmi-dates-khejur-500-gm.webp" srcset="./wp-content/uploads/2026/08/kalmi-dates-khejur-500-gm.webp 400w, ./wp-content/uploads/2026/08/kalmi-dates-khejur-500-gm-300x300.webp 300w, ./wp-content/uploads/2026/08/kalmi-dates-khejur-500-gm-148x148.webp 148w, ./wp-content/uploads/2026/08/kalmi-dates-khejur-500-gm-150x150.webp 150w" width="400"/> </a>
-<div class="wd-product-img-hover hover-img">
-<img alt="" class="attachment-large size-large" decoding="async" height="400" loading="lazy" sizes="auto, (max-width: 400px) 100vw, 400px" src="./wp-content/uploads/2026/08/kalmi-dates-khejur-500-gm-1.webp" srcset="./wp-content/uploads/2026/08/kalmi-dates-khejur-500-gm-1.webp 400w, ./wp-content/uploads/2026/08/kalmi-dates-khejur-500-gm-1-300x300.webp 300w, ./wp-content/uploads/2026/08/kalmi-dates-khejur-500-gm-1-148x148.webp 148w, ./wp-content/uploads/2026/08/kalmi-dates-khejur-500-gm-1-150x150.webp 150w" width="400"/> </div>
-</div>
-</div>
-<div class="wp-block-wd-container wd-dir-col wd-align-is-lg-center wd-a6196ec8 wd-custom-width">
-<div class="wp-block-wd-container wd-dir-col wd-41d5a3a7"> <div class="wd-quick-view-btn wd-quick-view-icon wd-loop-prod-btn wd-f3598456 wd-action-btn wd-style-icon">
-<a class="open-quick-view wd-tooltip wd-tooltip-top" data-id="530" href="javascript:void(0)" onclick="window.DeshiMart.openQuickView(530); return false;" rel="nofollow">
-<span class="wd-action-icon"></span>
-<span class="wd-action-text">
-						Quick view					</span>
+<img alt="অর্গানিক ফ্রেশ কালমি খেজুর" decoding="async" loading="lazy" src="./wp-content/uploads/2026/08/kalmi-dates-khejur-500-gm.webp"/>
 </a>
 </div>
-<h3 class="wd-loop-prod-title wd-entities-title wd-b31e67b7">
-<a href="javascript:void(0)" onclick="window.DeshiMart.openQuickView(530); return false;">
-				অর্গানিক ফ্রেশ কালমি খেজুর			</a>
-</h3>
-<div class="wd-loop-prod-price wd-70452500">
-<span class="price"><span aria-hidden="true" class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" dir="auto" translate="no">৳ </span>850</bdi></span> <span aria-hidden="true">–</span> <span aria-hidden="true" class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" dir="auto" translate="no">৳ </span>4,050</bdi></span><span class="screen-reader-text">Price range: ৳ 850 through ৳ 4,050</span></span>
+<div class="wd-card-body">
+<div class="wd-loop-prod-title">
+<h3><a href="javascript:void(0)" onclick="window.DeshiMart.openQuickView(530); return false;">অর্গানিক ফ্রেশ কালমি খেজুর</a></h3>
 </div>
+<div class="wd-loop-prod-price">
+<span class="price"><del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">৳ </span>950</bdi></span></del> <ins><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">৳ </span>850</bdi></span></ins></span>
 </div>
-<div class="wp-block-wd-container wd-dir-row wd-90eb1c9a">
-<div class="wp-block-wd-container wd-dir-row wd-4d11bc57"> <div class="wd-add-btn-wrapp wd-6f881de1">
-<div class="wd-add-btn wd-loop-prod-btn wd-add-btn-replace wd-stretched">
-<a aria-describedby="woocommerce_loop_add_to_cart_link_describedby_530" aria-label="Select options for “অর্গানিক ফ্রেশ কালমি খেজুর”" class="button product_type_variable add_to_cart_button add-to-cart-loop" data-product_id="530" data-product_sku="" data-quantity="1" href="javascript:void(0)" onclick="window.DeshiMart.addProductToCartFromCard(530, this); return false;" rel=""><span class="wd-action-icon"><span class="wd-check-icon"></span></span><span class="wd-action-text">Select options</span></a> <span class="screen-reader-text" id="woocommerce_loop_add_to_cart_link_describedby_530">
-		This product has multiple variants. The options may be chosen on the product page	</span>
-</div>
-</div>
-</div>
-<div class="wp-block-wd-container wd-dir-row wd-494622d1"><a class="isl-loop-buy-now" href="javascript:void(0)" onclick="window.DeshiMart.quickBuyNow(530); return false;">Buy Now</a>
+<div class="product-card-btn-row">
+<a aria-label="Add to cart" class="button product_type_variable add_to_cart_button" href="javascript:void(0)" onclick="window.DeshiMart.addProductToCartFromCard(530, this); return false;" tabindex="-1"><span>অ্যাড টু কার্ট</span></a>
+<a aria-label="Buy now" class="button product_type_variable isl-loop-buy-now" href="javascript:void(0)" onclick="window.DeshiMart.quickBuyNow(530); return false;" tabindex="-1"><span>অর্ডার করুন</span></a>
 </div>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="wd-product wd-col wd-loop-item-658 wd-hover-parent product type-product post-534 status-publish last instock product_cat-ghee has-post-thumbnail sale shipping-taxable purchasable product-type-variable has-default-attributes" data-category="ghee" data-id="534" data-loop="3">
+</div><div class="wd-product wd-col wd-loop-item-814 wd-hover-parent product type-product post-534 status-publish instock product_cat-ghee has-post-thumbnail shipping-taxable purchasable product-type-variable" data-category="ghee" data-id="534" data-loop="3">
 <div class="wd-product-wrapper wd-entry-content">
-<div class="wp-block-wd-container wd-dir-row wd-align-is-lg-center wd-animation wd-transform wd-animation-zoom-in wd_delay_20 wd-7b9a3070">
-<div class="wp-block-wd-container wd-dir-col wd-e78a4ce6 wd-custom-width">
-<div class="wp-block-wd-icon wd-363b656d wd-align-s-start"><svg aria-hidden="true" class="wd-svg-icon" fill="none" height="38" viewbox="0 0 160 38" width="160" xmlns="http://www.w3.org/2000/svg">
-<rect fill="#FF4545" height="38" rx="7" width="160"></rect>
-<path d="M22.5 9C22.5 9 24 14 20.8 17.2C19 19 18.5 20.5 18.5 22C18.5 25 20.8 27.5 23.8 27.5C27.2 27.5 29.5 24.8 29.5 21.5C29.5 16.8 25.8 11.5 22.5 9Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-<path d="M22 23C22 21.5 22.8 20.5 24.2 19.3C24.6 21 25.5 21.8 25.5 23C25.5 24.2 24.6 25 23.6 25C22.7 25 22 24.2 22 23Z" fill="white"></path>
-<text fill="white" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" x="38" y="25">Best Selling</text>
-</svg></div>
-<div class="wd-loop-prod-thumb wd-product-thumb wd-c2247e36 wd-hover-zoom">
+<div class="product-card wd-custom-card-fixed">
+<div class="wd-card-badge-pill">Best Selling</div>
+<div class="wd-loop-prod-thumb">
 <a aria-label="আড়ং ডেইরি বিশুদ্ধ ঘি" class="wd-product-img-link" href="javascript:void(0)" onclick="window.DeshiMart.openQuickView(534); return false;" tabindex="-1">
-<img alt="" class="attachment-large size-large" decoding="async" height="600" loading="lazy" sizes="auto, (max-width: 600px) 100vw, 600px" src="./wp-content/uploads/2026/08/1-1-1-1.webp" srcset="./wp-content/uploads/2026/08/1-1-1-1.webp 600w, ./wp-content/uploads/2026/08/1-1-1-1-300x300.webp 300w, ./wp-content/uploads/2026/08/1-1-1-1-148x148.webp 148w, ./wp-content/uploads/2026/08/1-1-1-1-150x150.webp 150w" width="600"/> </a>
-<div class="wd-product-img-hover hover-img">
-<img alt="" class="attachment-large size-large" decoding="async" height="600" loading="lazy" sizes="auto, (max-width: 600px) 100vw, 600px" src="./wp-content/uploads/2026/08/1-1-1-1.webp" srcset="./wp-content/uploads/2026/08/1-1-1-1.webp 600w, ./wp-content/uploads/2026/08/1-1-1-1-300x300.webp 300w, ./wp-content/uploads/2026/08/1-1-1-1-148x148.webp 148w, ./wp-content/uploads/2026/08/1-1-1-1-150x150.webp 150w" width="600"/> </div>
-</div>
-</div>
-<div class="wp-block-wd-container wd-dir-col wd-align-is-lg-center wd-a6196ec8 wd-custom-width">
-<div class="wp-block-wd-container wd-dir-col wd-41d5a3a7"> <div class="wd-quick-view-btn wd-quick-view-icon wd-loop-prod-btn wd-f3598456 wd-action-btn wd-style-icon">
-<a class="open-quick-view wd-tooltip wd-tooltip-top" data-id="534" href="javascript:void(0)" onclick="window.DeshiMart.openQuickView(534); return false;" rel="nofollow">
-<span class="wd-action-icon"></span>
-<span class="wd-action-text">
-						Quick view					</span>
+<img alt="আড়ং ডেইরি বিশুদ্ধ ঘি" decoding="async" loading="lazy" src="./wp-content/uploads/2026/08/1-1-1-1.webp"/>
 </a>
 </div>
-<h3 class="wd-loop-prod-title wd-entities-title wd-b31e67b7">
-<a href="javascript:void(0)" onclick="window.DeshiMart.openQuickView(534); return false;">
-				আড়ং ডেইরি বিশুদ্ধ ঘি			</a>
-</h3>
-<div class="wd-loop-prod-price wd-70452500">
-<span class="price"><span aria-hidden="true" class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" dir="auto" translate="no">৳ </span>390</bdi></span> <span aria-hidden="true">–</span> <span aria-hidden="true" class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" dir="auto" translate="no">৳ </span>850</bdi></span><span class="screen-reader-text">Price range: ৳ 390 through ৳ 850</span></span>
+<div class="wd-card-body">
+<div class="wd-loop-prod-title">
+<h3><a href="javascript:void(0)" onclick="window.DeshiMart.openQuickView(534); return false;">আড়ং ডেইরি বিশুদ্ধ ঘি</a></h3>
 </div>
+<div class="wd-loop-prod-price">
+<span class="price"><del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">৳ </span>450</bdi></span></del> <ins><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">৳ </span>390</bdi></span></ins></span>
 </div>
-<div class="wp-block-wd-container wd-dir-row wd-90eb1c9a">
-<div class="wp-block-wd-container wd-dir-row wd-4d11bc57"> <div class="wd-add-btn-wrapp wd-6f881de1">
-<div class="wd-add-btn wd-loop-prod-btn wd-add-btn-replace wd-stretched">
-<a aria-describedby="woocommerce_loop_add_to_cart_link_describedby_534" aria-label="Select options for “আড়ং ডেইরি বিশুদ্ধ ঘি”" class="button product_type_variable add_to_cart_button add-to-cart-loop" data-product_id="534" data-product_sku="" data-quantity="1" href="javascript:void(0)" onclick="window.DeshiMart.addProductToCartFromCard(534, this); return false;" rel=""><span class="wd-action-icon"><span class="wd-check-icon"></span></span><span class="wd-action-text">Select options</span></a> <span class="screen-reader-text" id="woocommerce_loop_add_to_cart_link_describedby_534">
-		This product has multiple variants. The options may be chosen on the product page	</span>
-</div>
-</div>
-</div>
-<div class="wp-block-wd-container wd-dir-row wd-494622d1"><a class="isl-loop-buy-now" href="javascript:void(0)" onclick="window.DeshiMart.quickBuyNow(534); return false;">Buy Now</a>
+<div class="product-card-btn-row">
+<a aria-label="Add to cart" class="button product_type_variable add_to_cart_button" href="javascript:void(0)" onclick="window.DeshiMart.addProductToCartFromCard(534, this); return false;" tabindex="-1"><span>অ্যাড টু কার্ট</span></a>
+<a aria-label="Buy now" class="button product_type_variable isl-loop-buy-now" href="javascript:void(0)" onclick="window.DeshiMart.quickBuyNow(534); return false;" tabindex="-1"><span>অর্ডার করুন</span></a>
 </div>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="wd-product wd-col wd-loop-item-658 wd-hover-parent product type-product post-532 status-publish first instock product_cat-ghee has-post-thumbnail sale shipping-taxable purchasable product-type-variable has-default-attributes" data-category="ghee" data-id="532" data-loop="4">
+</div><div class="wd-product wd-col wd-loop-item-814 wd-hover-parent product type-product post-532 status-publish instock product_cat-ghee has-post-thumbnail shipping-taxable purchasable product-type-variable" data-category="ghee" data-id="532" data-loop="4">
 <div class="wd-product-wrapper wd-entry-content">
-<div class="wp-block-wd-container wd-dir-row wd-align-is-lg-center wd-animation wd-transform wd-animation-zoom-in wd_delay_20 wd-7b9a3070">
-<div class="wp-block-wd-container wd-dir-col wd-e78a4ce6 wd-custom-width">
-<div class="wp-block-wd-icon wd-363b656d wd-align-s-start"><svg aria-hidden="true" class="wd-svg-icon" fill="none" height="38" viewbox="0 0 160 38" width="160" xmlns="http://www.w3.org/2000/svg">
-<rect fill="#FF4545" height="38" rx="7" width="160"></rect>
-<path d="M22.5 9C22.5 9 24 14 20.8 17.2C19 19 18.5 20.5 18.5 22C18.5 25 20.8 27.5 23.8 27.5C27.2 27.5 29.5 24.8 29.5 21.5C29.5 16.8 25.8 11.5 22.5 9Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-<path d="M22 23C22 21.5 22.8 20.5 24.2 19.3C24.6 21 25.5 21.8 25.5 23C25.5 24.2 24.6 25 23.6 25C22.7 25 22 24.2 22 23Z" fill="white"></path>
-<text fill="white" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" x="38" y="25">Best Selling</text>
-</svg></div>
-<div class="wd-loop-prod-thumb wd-product-thumb wd-c2247e36 wd-hover-zoom">
+<div class="product-card wd-custom-card-fixed">
+<div class="wd-card-badge-pill">Best Selling</div>
+<div class="wd-loop-prod-thumb">
 <a aria-label="আসল প্রিমিয়াম বিশুদ্ধ ঘি" class="wd-product-img-link" href="javascript:void(0)" onclick="window.DeshiMart.openQuickView(532); return false;" tabindex="-1">
-<img alt="" class="attachment-large size-large" decoding="async" height="600" loading="lazy" sizes="auto, (max-width: 600px) 100vw, 600px" src="./wp-content/uploads/2026/08/1-9.webp" srcset="./wp-content/uploads/2026/08/1-9.webp 600w, ./wp-content/uploads/2026/08/1-9-300x300.webp 300w, ./wp-content/uploads/2026/08/1-9-148x148.webp 148w, ./wp-content/uploads/2026/08/1-9-150x150.webp 150w" width="600"/> </a>
-</div>
-</div>
-<div class="wp-block-wd-container wd-dir-col wd-align-is-lg-center wd-a6196ec8 wd-custom-width">
-<div class="wp-block-wd-container wd-dir-col wd-41d5a3a7"> <div class="wd-quick-view-btn wd-quick-view-icon wd-loop-prod-btn wd-f3598456 wd-action-btn wd-style-icon">
-<a class="open-quick-view wd-tooltip wd-tooltip-top" data-id="532" href="javascript:void(0)" onclick="window.DeshiMart.openQuickView(532); return false;" rel="nofollow">
-<span class="wd-action-icon"></span>
-<span class="wd-action-text">
-						Quick view					</span>
+<img alt="আসল প্রিমিয়াম বিশুদ্ধ ঘি" decoding="async" loading="lazy" src="./wp-content/uploads/2026/08/1-9.webp"/>
 </a>
 </div>
-<h3 class="wd-loop-prod-title wd-entities-title wd-b31e67b7">
-<a href="javascript:void(0)" onclick="window.DeshiMart.openQuickView(532); return false;">
-				আসল প্রিমিয়াম বিশুদ্ধ ঘি			</a>
-</h3>
-<div class="wd-loop-prod-price wd-70452500">
-<span class="price"><span aria-hidden="true" class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" dir="auto" translate="no">৳ </span>400</bdi></span> <span aria-hidden="true">–</span> <span aria-hidden="true" class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" dir="auto" translate="no">৳ </span>800</bdi></span><span class="screen-reader-text">Price range: ৳ 400 through ৳ 800</span></span>
+<div class="wd-card-body">
+<div class="wd-loop-prod-title">
+<h3><a href="javascript:void(0)" onclick="window.DeshiMart.openQuickView(532); return false;">আসল প্রিমিয়াম বিশুদ্ধ ঘি</a></h3>
 </div>
+<div class="wd-loop-prod-price">
+<span class="price"><del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">৳ </span>480</bdi></span></del> <ins><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">৳ </span>400</bdi></span></ins></span>
 </div>
-<div class="wp-block-wd-container wd-dir-row wd-90eb1c9a">
-<div class="wp-block-wd-container wd-dir-row wd-4d11bc57"> <div class="wd-add-btn-wrapp wd-6f881de1">
-<div class="wd-add-btn wd-loop-prod-btn wd-add-btn-replace wd-stretched">
-<a aria-describedby="woocommerce_loop_add_to_cart_link_describedby_532" aria-label="Select options for “আসল প্রিমিয়াম বিশুদ্ধ ঘি”" class="button product_type_variable add_to_cart_button add-to-cart-loop" data-product_id="532" data-product_sku="" data-quantity="1" href="javascript:void(0)" onclick="window.DeshiMart.addProductToCartFromCard(532, this); return false;" rel=""><span class="wd-action-icon"><span class="wd-check-icon"></span></span><span class="wd-action-text">Select options</span></a> <span class="screen-reader-text" id="woocommerce_loop_add_to_cart_link_describedby_532">
-		This product has multiple variants. The options may be chosen on the product page	</span>
-</div>
-</div>
-</div>
-<div class="wp-block-wd-container wd-dir-row wd-494622d1"><a class="isl-loop-buy-now" href="javascript:void(0)" onclick="window.DeshiMart.quickBuyNow(532); return false;">Buy Now</a>
+<div class="product-card-btn-row">
+<a aria-label="Add to cart" class="button product_type_variable add_to_cart_button" href="javascript:void(0)" onclick="window.DeshiMart.addProductToCartFromCard(532, this); return false;" tabindex="-1"><span>অ্যাড টু কার্ট</span></a>
+<a aria-label="Buy now" class="button product_type_variable isl-loop-buy-now" href="javascript:void(0)" onclick="window.DeshiMart.quickBuyNow(532); return false;" tabindex="-1"><span>অর্ডার করুন</span></a>
 </div>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</div></div>
 </div>
 </div>
 </div>
@@ -2458,9 +2411,9 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 <ul class="wd-category-filter-nav">
 <li><button class="wd-category-filter-btn active" data-cat="all" onclick="window.DeshiMart.filterCategory('all', this); return false;" type="button">সব পণ্য</button></li>
 <li><button class="wd-category-filter-btn" data-cat="ghee" onclick="window.DeshiMart.filterCategory('ghee', this); return false;" type="button">গাওয়া ঘি</button></li>
+<li><button class="wd-category-filter-btn" data-cat="oil" onclick="window.DeshiMart.filterCategory('oil', this); return false;" type="button">খাঁটি তেল</button></li>
 <li><button class="wd-category-filter-btn" data-cat="honey" onclick="window.DeshiMart.filterCategory('honey', this); return false;" type="button">খাঁটি মধু</button></li>
 <li><button class="wd-category-filter-btn" data-cat="dates" onclick="window.DeshiMart.filterCategory('dates', this); return false;" type="button">খেজুর</button></li>
-<li><button class="wd-category-filter-btn" data-cat="oil" onclick="window.DeshiMart.filterCategory('oil', this); return false;" type="button">খাঁটি তেল</button></li>
 <li><button class="wd-category-filter-btn" data-cat="tea" onclick="window.DeshiMart.filterCategory('tea', this); return false;" type="button">চা পাতা</button></li>
 <li><button class="wd-category-filter-btn" data-cat="nuts" onclick="window.DeshiMart.filterCategory('nuts', this); return false;" type="button">বাদাম ও বীজ</button></li>
 <li><button class="wd-category-filter-btn" data-cat="spices" onclick="window.DeshiMart.filterCategory('spices', this); return false;" type="button">মসলা</button></li>
