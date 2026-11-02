@@ -34,29 +34,22 @@ def main():
 
         badge_html = ''
         if badge_text:
-            badge_html = f'''<div class="wp-block-wd-icon wd-363b656d wd-align-s-start"><svg class="wd-svg-icon" width="130" height="28" viewBox="0 0 130 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="130" height="28" rx="5" fill="#e27235"></rect><text x="12" y="19" fill="white" font-family="Arial, sans-serif" font-size="12" font-weight="700">{badge_text}</text></svg></div>'''
+            badge_html = f'<div class="wd-card-badge-pill">{badge_text}</div>'
 
         card_content = f'''<div class="wd-product wd-col wd-loop-item-814 wd-hover-parent product type-product post-{pid} status-publish instock product_cat-{cat} has-post-thumbnail shipping-taxable purchasable product-type-variable" data-loop="{loop_idx}" data-id="{pid}" data-category="{cat}">
 	<div class="wd-product-wrapper wd-entry-content">
-		<div class="wp-block-wd-container wd-dir-col wd-589d6bfe product-hover-scale product-card has-custom-css">
-			<div class="wp-block-wd-container wd-dir-col wd-77ba0aa6">
-				{badge_html}
-				<div class="wd-loop-prod-thumb wd-product-thumb wd-b29d096d wd-custom-width wd-hover-zoom">
-					<a href="javascript:void(0)" onclick="window.DeshiMart.openQuickView({pid}); return false;" class="wd-product-img-link" tabindex="-1" aria-label="{title}">
-						<img loading="lazy" decoding="async" width="400" height="400" src="{img}" class="attachment-large size-large" alt="{title}" />
-					</a>
-				</div>
-				<div class="wd-loop-prod-actions wd-action-buttons wd-f75605f6 wd-pos-top-end wd-scheme-dark wd-style-action-btn wd-show-labels-no">
-					<div class="quick-view wd-action-btn wd-style-icon wd-quick-view-icon">
-						<a href="javascript:void(0)" onclick="window.DeshiMart.openQuickView({pid}); return false;" class="open-quick-view quick-view-button" aria-label="Quick view"><span>Quick view</span></a>
-					</div>
-				</div>
+		<div class="product-card wd-custom-card-fixed">
+			{badge_html}
+			<div class="wd-loop-prod-thumb">
+				<a href="javascript:void(0)" onclick="window.DeshiMart.openQuickView({pid}); return false;" class="wd-product-img-link" tabindex="-1" aria-label="{title}">
+					<img loading="lazy" decoding="async" src="{img}" alt="{title}" />
+				</a>
 			</div>
-			<div class="wp-block-wd-container wd-dir-col wd-811c750b">
-				<div class="wd-loop-prod-title wd-entities-title wd-651ecab5">
-					<h3 class="wd-entities-title"><a href="javascript:void(0)" onclick="window.DeshiMart.openQuickView({pid}); return false;">{title}</a></h3>
+			<div class="wd-card-body">
+				<div class="wd-loop-prod-title">
+					<h3><a href="javascript:void(0)" onclick="window.DeshiMart.openQuickView({pid}); return false;">{title}</a></h3>
 				</div>
-				<div class="wd-loop-prod-price wd-c249a5b6">
+				<div class="wd-loop-prod-price">
 					{price_html}
 				</div>
 				<div class="product-card-btn-row">
@@ -99,17 +92,31 @@ def main():
             a['href'] = '#'
             a['onclick'] = 'window.scrollTo({top:0, behavior:"smooth"}); return false;'
 
-    # 4. Top menu items: ensure Tea is included alongside Dates, Ghee, Honey, Nuts, Oil, Shutki, Spices
-    menu = soup.find('ul', id='menu-products-menu')
-    if menu:
-        if not menu.find(lambda el: el.name == 'a' and 'tea' in el.get('href', '').lower()):
-            tea_li = soup.new_tag('li', id='menu-item-tea', **{'class': 'menu-item menu-item-type-taxonomy menu-item-object-product_cat item-level-0 menu-simple-dropdown wd-event-hover'})
-            tea_a = soup.new_tag('a', href='javascript:void(0)', onclick="window.DeshiMart.scrollToCategory('tea'); return false;", **{'class': 'woodmart-nav-link'})
-            tea_span = soup.new_tag('span', **{'class': 'nav-link-text'})
-            tea_span.string = 'Tea'
-            tea_a.append(tea_span)
-            tea_li.append(tea_a)
-            menu.append(tea_li)
+    # 4. Top menu items: rebuild in exact sequential vertical on-page order!
+    # Sequence: 1. Ghee -> 2. Oil -> 3. Honey & Dates -> 4. Tea -> 5. Nuts -> 6. Spices -> 7. Shutki -> 8. All Products
+    nav_definitions = [
+        ('ghee', 'Ghee', 'গাওয়া ঘি'),
+        ('oil', 'Oil', 'খাঁটি তেল'),
+        ('honey', 'Honey & Dates', 'মধু ও খেজুর'),
+        ('tea', 'Tea', 'চা পাতা'),
+        ('nuts', 'Nuts', 'বাদাম ও বীজ'),
+        ('spices', 'Spices', 'মসলা'),
+        ('shutki', 'Shutki', 'শুঁটকি'),
+        ('all', 'All Products', 'সব পণ্য'),
+    ]
+
+    for menu_id in ['menu-products-menu', 'menu-products-menu-1']:
+        menu_el = soup.find('ul', id=menu_id)
+        if menu_el:
+            menu_el.clear()
+            for slug, label, b_label in nav_definitions:
+                li = soup.new_tag('li', id=f'{menu_id}-{slug}', **{'class': 'menu-item menu-item-type-taxonomy menu-item-object-product_cat item-level-0 menu-simple-dropdown wd-event-hover'})
+                a = soup.new_tag('a', href='javascript:void(0)', onclick=f"window.DeshiMart.scrollToCategory('{slug}'); return false;", **{'class': 'woodmart-nav-link'})
+                span = soup.new_tag('span', **{'class': 'nav-link-text'})
+                span.string = label
+                a.append(span)
+                li.append(a)
+                menu_el.append(li)
 
     # 5. Update all category links (nav, grid, carousel)
     for a in soup.find_all('a'):
@@ -463,6 +470,286 @@ def main():
   display: none !important;
   content: "" !important;
 }
+
+/* ========================================================
+   FIX 3: PIXEL-PERFECT EQUAL CARD HEIGHTS & STRAIGHT BUTTON LINE
+======================================================== */
+.wd-carousel-wrap {
+  display: flex !important;
+  align-items: stretch !important;
+}
+.wd-carousel-item {
+  height: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+.wd-product.wd-col,
+.wd-product {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+.wd-product-wrapper {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+}
+.product-card.wd-custom-card-fixed,
+.product-card {
+  height: 100% !important;
+  min-height: 330px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  position: relative !important;
+  background: #ffffff !important;
+  border: 1px solid #ffe4d1 !important;
+  border-radius: 8px !important;
+  padding: 12px 10px 12px 10px !important;
+  box-sizing: border-box !important;
+  transition: all 0.25s ease !important;
+}
+.product-card.wd-custom-card-fixed:hover,
+.product-card:hover {
+  border-color: #f47b20 !important;
+  box-shadow: 0 8px 24px rgba(244, 123, 32, 0.12) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Badge Pill - Absolute, never offsets content flow */
+.wd-card-badge-pill {
+  position: absolute !important;
+  top: 10px !important;
+  left: 10px !important;
+  background: #f47b20 !important;
+  color: #ffffff !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  padding: 3px 8px !important;
+  border-radius: 4px !important;
+  z-index: 5 !important;
+  pointer-events: none !important;
+  line-height: 1.2 !important;
+  box-shadow: 0 2px 4px rgba(244, 123, 32, 0.3) !important;
+}
+
+/* Hide unstyled / displaced Quick view text in card loops */
+.wd-loop-prod-actions,
+.wd-product .quick-view.wd-action-btn,
+.wd-product .wd-quick-view-btn {
+  display: none !important;
+}
+
+/* Thumbnail Box: Fixed Height, Perfectly Centered */
+.wd-loop-prod-thumb {
+  width: 100% !important;
+  height: 180px !important;
+  min-height: 180px !important;
+  max-height: 180px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 0 10px 0 !important;
+  padding: 4px !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+.wd-loop-prod-thumb a.wd-product-img-link {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+.wd-loop-prod-thumb img {
+  max-height: 165px !important;
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 auto !important;
+  transition: transform 0.3s ease !important;
+}
+.product-card:hover .wd-loop-prod-thumb img {
+  transform: scale(1.05) !important;
+}
+
+/* Card Body: Flex Column, Pushes Buttons to Bottom */
+.wd-card-body {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+
+/* Title: Fixed 2-Line Box */
+.wd-loop-prod-title {
+  height: 38px !important;
+  min-height: 38px !important;
+  max-height: 38px !important;
+  margin: 0 0 6px 0 !important;
+  overflow: hidden !important;
+  text-align: center !important;
+}
+.wd-loop-prod-title h3,
+.wd-loop-prod-title h3 a {
+  font-size: 13px !important;
+  line-height: 1.35 !important;
+  font-weight: 600 !important;
+  color: #1e293b !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  text-decoration: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.wd-loop-prod-title h3 a:hover {
+  color: #f47b20 !important;
+}
+
+/* Price: Fixed Height */
+.wd-loop-prod-price {
+  height: 24px !important;
+  min-height: 24px !important;
+  max-height: 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 0 10px 0 !important;
+  font-size: 13px !important;
+  text-align: center !important;
+}
+.wd-loop-prod-price .price {
+  display: inline-flex !important;
+  align-items: baseline !important;
+  gap: 6px !important;
+}
+.wd-loop-prod-price del {
+  color: #94a3b8 !important;
+  font-size: 11px !important;
+}
+.wd-loop-prod-price ins, 
+.wd-loop-prod-price .amount {
+  color: #f47b20 !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+}
+
+/* ========================================================
+   FIX 4: MOBILE RESPONSIVE (MAX-WIDTH: 768PX)
+======================================================== */
+@media (max-width: 768px) {
+  /* Exactly 2 products per row in carousels */
+  .wd-carousel-container,
+  .wd-carousel-inner,
+  .wd-carousel {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .wd-carousel-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    transform: none !important;
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    margin: 0 !important;
+    padding: 0 4px !important;
+    gap: 8px !important;
+    box-sizing: border-box !important;
+  }
+  .wd-carousel-item {
+    flex: 0 0 calc(50% - 4px) !important;
+    max-width: calc(50% - 4px) !important;
+    width: calc(50% - 4px) !important;
+    min-width: calc(50% - 4px) !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    scroll-snap-align: start !important;
+    display: flex !important;
+  }
+
+  /* Hide intrusive arrows on mobile touch swipe */
+  .wd-nav-arrows {
+    display: none !important;
+  }
+
+  /* Exactly 2 products per row in grids (target only the grid, never the carousels) */
+  .products.elements-grid,
+  .products:not(.wd-carousel-container):not(.wd-carousel-wrap):not(.wd-carousel) {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    padding: 0 4px !important;
+  }
+  .wd-product.wd-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+  .product-card.wd-custom-card-fixed,
+  .product-card {
+    min-height: 255px !important;
+    padding: 8px 6px 8px 6px !important;
+  }
+  .wd-loop-prod-thumb {
+    height: 125px !important;
+    min-height: 125px !important;
+    max-height: 125px !important;
+    margin-bottom: 6px !important;
+  }
+  .wd-loop-prod-thumb img {
+    max-height: 115px !important;
+  }
+  .wd-loop-prod-title {
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+    margin-bottom: 4px !important;
+  }
+  .wd-loop-prod-title h3,
+  .wd-loop-prod-title h3 a {
+    font-size: 11px !important;
+    line-height: 1.25 !important;
+  }
+  .wd-loop-prod-price {
+    height: 18px !important;
+    min-height: 18px !important;
+    max-height: 18px !important;
+    font-size: 11px !important;
+    margin-bottom: 6px !important;
+  }
+  .product-card-btn-row {
+    gap: 4px !important;
+  }
+  .product-card-btn-row > a {
+    height: 28px !important;
+    min-height: 28px !important;
+    max-height: 28px !important;
+    font-size: 10px !important;
+    line-height: 26px !important;
+    padding: 0 2px !important;
+    border-radius: 4px !important;
+  }
+  .wd-card-badge-pill {
+    font-size: 9px !important;
+    padding: 2px 5px !important;
+    top: 6px !important;
+    left: 6px !important;
+  }
+}
 </style>
 '''
     html = html.replace('</head>', extra_slide_style + '\n</head>')
@@ -525,7 +812,7 @@ def main():
     html = html.replace('</body>', templates_and_modals + '\n</body>')
 
     # 11. Strict elimination of ALL emojis across html
-    for em in ['🔥', '🌿', '🔒', '⚡', '✨', '🛒', '📦', '⭐']:
+    for em in ['\U0001F525', '\U0001F33F', '\U0001F512', '\u26A1', '\u2728', '\U0001F6D2', '\U0001F4E6', '\u2B50']:
         html = html.replace(em, '')
 
     with open('index.html', 'w', encoding='utf-8') as f:

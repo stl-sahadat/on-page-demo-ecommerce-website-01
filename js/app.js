@@ -1444,13 +1444,13 @@
       headings.forEach(function (h) {
         if (h.textContent.trim().indexOf('All Homemade Ghee') !== -1) targetEl = h;
       });
-    } else if (slug === 'dates' || slug === 'honey') {
-      headings.forEach(function (h) {
-        if (h.textContent.trim().indexOf('All Honey/Dates') !== -1) targetEl = h;
-      });
     } else if (slug === 'oil' || slug === 'exclusive') {
       headings.forEach(function (h) {
         if (h.textContent.trim().indexOf('All Exclusive Products') !== -1) targetEl = h;
+      });
+    } else if (slug === 'dates' || slug === 'honey' || slug === 'honey-dates') {
+      headings.forEach(function (h) {
+        if (h.textContent.trim().indexOf('All Honey/Dates') !== -1) targetEl = h;
       });
     } else {
       // tea, nuts, spices, shutki, all
@@ -1469,7 +1469,7 @@
 
     if (targetEl) {
       var top = targetEl.getBoundingClientRect().top + window.pageYOffset - 90;
-      window.scrollTo({ top: top, behavior: 'smooth' });
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
     }
   }
 
