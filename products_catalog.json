@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "title": "Spices",
+    "price": "",
+    "image": "./wp-content/uploads/2026/08/21.webp",
+    "hover_image": "./wp-content/uploads/2026/08/21.webp",
+    "badge": "",
+    "rating": "5.00",
+    "link": ""
+  },
+  {
+    "id": 2,
+    "title": "ACME প্রিমিয়াম বিশুদ্ধ ঘি",
+    "price": "৳350–৳700Price range: ৳ 350 through ৳ 700",
+    "image": "./wp-content/uploads/2026/08/1-2-1-1.webp",
+    "hover_image": "./wp-content/uploads/2026/08/1-2-1-1.webp",
+    "badge": "Best Selling",
+    "rating": "5.00",
+    "link": "https://demo7.itservicelab.com/shop/ghee/acme-premium-pure-ghee/"
+  },
+  {
+    "id": 3,
+    "title": "অর্গানিক ফ্রেশ কালমি খেজুর",
+    "price": "৳850–৳4,050Price range: ৳ 850 through ৳ 4,050",
+    "image": "./wp-content/uploads/2026/08/kalmi-dates-khejur-500-gm.webp",
+    "hover_image": "./wp-content/uploads/2026/08/kalmi-dates-khejur-500-gm-1.webp",
+    "badge": "Best Selling",
+    "rating": "5.00",
+    "link": "https://demo7.itservicelab.com/shop/dates/organic-fresh-kalmi-dates/"
+  },
+  {
+    "id": 4,
+    "title": "আড়ং ডেইরি বিশুদ্ধ ঘি",
+    "price": "৳390–৳850Price range: ৳ 390 through ৳ 850",
+    "image": "./wp-content/uploads/2026/08/1-1-1-1.webp",
+    "hover_image": "./wp-content/uploads/2026/08/1-1-1-1.webp",
+    "badge": "Best Selling",
+    "rating": "5.00",
+    "link": "https://demo7.itservicelab.com/shop/ghee/aarong-dairy-pure-ghee/"
+  },
+  {
+    "id": 5,
+    "title": "আসল প্রিমিয়াম বিশুদ্ধ ঘি",
+    "price": "৳400–৳800Price range: ৳ 400 through ৳ 800",
+    "image": "./wp-content/uploads/2026/08/1-9.webp",
+    "hover_image": "./wp-content/uploads/2026/08/1-9.webp",
+    "badge": "Best Selling",
+    "rating": "5.00",
+    "link": "https://demo7.itservicelab.com/shop/ghee/asal-premium-pure-ghee/"
+  },
+  {
+    "id": 6,
+    "title": "একিউর প্রিমিয়াম বিশুদ্ধ ঘি",
+    "price": "৳300–৳1,250Price range: ৳ 300 through ৳ 1,250",
+    "image": "./wp-content/uploads/2026/08/22-Photoroom.webp",
+    "hover_image": "./wp-content/uploads/2026/08/22-Photoroom.webp",
+    "badge": "",
+    "rating": "5.00",
+    "link": "https://demo7.itservicelab.com/shop/ghee/aikur-premium-pure-ghee/"
+  },
+  {
+    "id": 7,
+    "title": "জিও ন্যাচারালস মালাই ঘি",
+    "price": "৳299–৳750Price range: ৳ 299 through ৳ 750",
+    "image": "./wp-content/uploads/2026/08/1-5.webp",
+    "hover_image": "./wp-content/uploads/2026/08/1-5.webp",
+    "badge": "",
+    "rating": "5.00",
+    "link": "https://demo7.itservicelab.com/shop/ghee/geo-naturals-malai-ghee/"
+  },
+  {
+    "id": 8,
+    "title": "দেশি গরুর গাওয়া ঘি",
+    "price": "৳490–৳920Price range: ৳ 490 through ৳ 920",
+    "image": "./wp-content/uploads/2026/08/1-9.webp",
+    "hover_image": "./wp-content/uploads/2026/08/1-9.webp",
+    "badge": "",
+    "rating": "5.00",
+    "link": "https://demo7.itservicelab.com/shop/ghee/pure-desi-cow-ghee/"
+  },
+  {
+    "id": 9,
+    "title": "পাবনা ডেইরি বিশুদ্ধ ঘি",
+    "price": "৳490–৳950Price range: ৳ 490 through ৳ 950",
+    "image": "./wp-content/uploads/2026/08/1-3-1.webp",
+    "hover_image": "./wp-content/uploads/2026/08/1-3-1.webp",
+    "badge": "",
+    "rating": "5.00",
+    "link": "https://demo7.itservicelab.com/shop/ghee/pabna-dairy-pure-ghee/"
+  },
+  {
+    "id": 10,
+    "title": "ইয়ো উই সুগন্ধি তিলের তেল",
+    "price": "৳490–৳1,050Price range: ৳ 490 through ৳ 1,050",
+    "image": "./wp-content/uploads/2026/08/yo-we-fragrance-sesame-oil-630-ml.webp",
+    "hover_image": "./wp-content/uploads/2026/08/yo-we-fragrance-sesame-oil-630-ml.webp",
+    "badge": "",
+    "rating": "5.00",
+    "link": "https://demo7.itservicelab.com/shop/exclusive/yo-wee-aromatic-sesame-oil/"
+  },
+  {
+    "id": 11,
+    "title": "কাজী অ্যান্ড কাজী মোরিঙ্গা চা",
+    "price": "৳880–৳1,750Price range: ৳ 880 through ৳ 1,750",
+    "image": "./wp-content/uploads/2026/08/kazi-kazi-organic-moringa-herbal-infusion-tea-25-pcs-375-gm.webp",
+    "hover_image": "./wp-content/uploads/2026/08/kazi-kazi-organic-moringa-herbal-infusion-tea-25-pcs-375-gm.webp",
+    "badge": "",
+    "rating": "5.00",
+    "link": "https://demo7.itservicelab.com/shop/tea/kazi-and-kazi-moringa-tea/"
+  },
+  {
+    "id": 12,
+    "title": "কারকুমা অর্গানিক বিশুদ্ধ মধু",
+    "price": "৳300–৳1,200Price range: ৳ 300 through ৳ 1,200",
+    "image": "./wp-content/uploads/2026/08/karkuma.webp",
+    "hover_image": "./wp-content/uploads/2026/08/2-Picsart-BackgroundChanger-1-Copy-944x1024.webp",
+    "badge": "",
+    "rating": "5.00",
+    "link": "https://demo7.itservicelab.com/shop/honey/karkuma-organic-pure-honey/"
+  },
+  {
+    "id": 13,
+    "title": "কেডি হারবাল টি",
+    "price": "৳250–৳950Price range: ৳ 250 through ৳ 950",
+    "image": "./wp-content/uploads/2026/08/kd-herbal-tea-100-gm.webp",
+    "hover_image": "./wp-content/uploads/2026/08/kd-herbal-tea-100-gm.webp",
+    "badge": "",
+    "rating": "5.00",
+    "link": "https://demo7.itservicelab.com/shop/tea/kd-herbal-tea/"
+  },
+  {
+    "id": 14,
+    "title": "ডাবর বিশুদ্ধ প্রাকৃতিক মধু",
+    "price": "৳780–৳1,350Price range: ৳ 780 through ৳ 1,350",
+    "image": "./wp-content/uploads/2026/08/1-2-1.webp",
+    "hover_image": "./wp-content/uploads/2026/08/1-3.webp",
+    "badge": "",
+    "rating": "5.00",
+    "link": "https://demo7.itservicelab.com/shop/honey/dabur-pure-natural-honey/"
+  },
+  {
+    "id": 15,
+    "title": "প্রিমিয়াম খুরমা খেজুর",
+    "price": "৳200–৳750Price range: ৳ 200 through ৳ 750",
+    "image": "./wp-content/uploads/2026/08/4-2.webp",
+    "hover_image": "./wp-content/uploads/2026/08/4-1-1.webp",
+    "badge": "",
+    "rating": "5.00",
+    "link": "https://demo7.itservicelab.com/shop/dates/organic-fresh-kalmi-dates-2/"
+  },
+  {
+    "id": 16,
+    "title": "কেডি নেচারস রোজ অয়েল",
+    "price": "৳280–৳550Price range: ৳ 280 through ৳ 550",
+    "image": "./wp-content/uploads/2026/08/kd-natures-aid-rose-oil-50-ml.webp",
+    "hover_image": "./wp-content/uploads/2026/08/kd-natures-aid-rose-oil-50-ml.webp",
+    "badge": "",
+    "rating": "5.00",
+    "link": "https://demo7.itservicelab.com/shop/exclusive/kd-natures-rose-oil/"
+  }
+]

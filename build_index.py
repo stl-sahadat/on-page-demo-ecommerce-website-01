@@ -1,0 +1,417 @@
+import os, re, json
+from bs4 import BeautifulSoup
+
+def main():
+    print("Reading base_updated.html and products data...")
+    with open('base_updated.html', 'r', encoding='utf-8') as f:
+        html = f.read()
+
+    with open('js/products-data.js', 'r', encoding='utf-8') as f:
+        p_text = f.read()
+
+    m = re.search(r'window\.DESHI_MART_PRODUCTS\s*=\s*(\[.*?\]);', p_text, re.DOTALL)
+    if not m:
+        raise ValueError("Could not parse products data")
+    products = json.loads(m.group(1))
+    prod_map = {p['id']: p for p in products}
+
+    soup = BeautifulSoup(html, 'html.parser')
+
+    def render_card_html(p, loop_idx=1, is_carousel=False):
+        pid = p['id']
+        cat = p['category']
+        title = p['title']
+        img = p['images'][0]
+        p_min = min(v['price'] for v in p['variations'])
+        p_max = max(v['price'] for v in p['variations'])
+        reg_min = min(v.get('regularPrice', v['price']) for v in p['variations'])
+        badge_text = p.get('badge', '')
+        
+        if reg_min > p_min:
+            price_html = f'''<span class="price"><del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#2547;&nbsp;</span>{reg_min}</bdi></span></del> <ins><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#2547;&nbsp;</span>{p_min}</bdi></span></ins></span>'''
+        else:
+            price_html = f'''<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#2547;&nbsp;</span>{p_min}</bdi></span></span>'''
+
+        badge_html = ''
+        if badge_text:
+            badge_html = f'''<div class="wp-block-wd-icon wd-363b656d wd-align-s-start"><svg class="wd-svg-icon" width="130" height="28" viewBox="0 0 130 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="130" height="28" rx="5" fill="#e27235"></rect><text x="12" y="19" fill="white" font-family="Arial, sans-serif" font-size="12" font-weight="700">{badge_text}</text></svg></div>'''
+
+        card_content = f'''<div class="wd-product wd-col wd-loop-item-814 wd-hover-parent product type-product post-{pid} status-publish instock product_cat-{cat} has-post-thumbnail shipping-taxable purchasable product-type-variable" data-loop="{loop_idx}" data-id="{pid}" data-category="{cat}">
+	<div class="wd-product-wrapper wd-entry-content">
+		<div class="wp-block-wd-container wd-dir-col wd-589d6bfe product-hover-scale product-card has-custom-css">
+			<div class="wp-block-wd-container wd-dir-col wd-77ba0aa6">
+				{badge_html}
+				<div class="wd-loop-prod-thumb wd-product-thumb wd-b29d096d wd-custom-width wd-hover-zoom">
+					<a href="javascript:void(0)" onclick="window.DeshiMart.openQuickView({pid}); return false;" class="wd-product-img-link" tabindex="-1" aria-label="{title}">
+						<img loading="lazy" decoding="async" width="400" height="400" src="{img}" class="attachment-large size-large" alt="{title}" />
+					</a>
+				</div>
+				<div class="wd-loop-prod-actions wd-action-buttons wd-f75605f6 wd-pos-top-end wd-scheme-dark wd-style-action-btn wd-show-labels-no">
+					<div class="quick-view wd-action-btn wd-style-icon wd-quick-view-icon">
+						<a href="javascript:void(0)" onclick="window.DeshiMart.openQuickView({pid}); return false;" class="open-quick-view quick-view-button" aria-label="Quick view"><span>Quick view</span></a>
+					</div>
+				</div>
+			</div>
+			<div class="wp-block-wd-container wd-dir-col wd-811c750b">
+				<div class="wd-loop-prod-title wd-entities-title wd-651ecab5">
+					<h3 class="wd-entities-title"><a href="javascript:void(0)" onclick="window.DeshiMart.openQuickView({pid}); return false;">{title}</a></h3>
+				</div>
+				<div class="wd-loop-prod-price wd-c249a5b6">
+					{price_html}
+				</div>
+				<div class="wp-block-wd-container wd-dir-row wd-39fb7563">
+					<div class="wd-loop-prod-add-to-cart wd-add-to-cart-btn wd-81cb7040 wd-style-default wd-style-icon-text">
+						<a href="javascript:void(0)" onclick="window.DeshiMart.addProductToCartFromCard({pid}, this); return false;" class="button product_type_variable add_to_cart_button" aria-label="Select options for &ldquo;{title}&rdquo;" tabindex="-1"><span>অ্যাড টু কার্ট</span></a>
+					</div>
+					<div class="wd-loop-prod-add-to-cart wd-add-to-cart-btn wd-81cb7040 wd-style-default wd-style-icon-text isl-buy-now">
+						<a href="javascript:void(0)" onclick="window.DeshiMart.quickBuyNow({pid}); return false;" class="button product_type_variable isl-loop-buy-now" aria-label="Buy now &ldquo;{title}&rdquo;" tabindex="-1"><span>অর্ডার করুন</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>'''
+        if is_carousel:
+            return f'<div class="wd-carousel-item">{card_content}</div>'
+        return card_content
+
+    # 1. Update logo links to stay on page
+    for logo_link in soup.find_all('a', class_='wd-logo'):
+        logo_link['href'] = '#'
+        logo_link['onclick'] = 'window.scrollTo({top:0, behavior:"smooth"}); return false;'
+
+    # 2. Update header cart & mobile toolbar cart
+    for cart_el in soup.find_all(['div', 'a'], class_=['wd-header-cart', 'wd-toolbar-cart', 'cart-widget-opener']):
+        cart_el['onclick'] = 'window.DeshiMart.openCartDrawer(); return false;'
+        cart_el['style'] = 'cursor: pointer;'
+        a = cart_el if cart_el.name == 'a' else cart_el.find('a')
+        if a:
+            a['href'] = 'javascript:void(0)'
+            a['onclick'] = 'window.DeshiMart.openCartDrawer(); return false;'
+
+    # 2b. Update side cart close button
+    for close_btn in soup.find_all('div', class_='close-side-widget'):
+        a = close_btn.find('a')
+        if a:
+            a['href'] = 'javascript:void(0)'
+            a['onclick'] = 'window.DeshiMart.closeCartDrawer(); return false;'
+
+    # 3. Update mobile toolbar shop
+    for shop_el in soup.find_all('div', class_='wd-toolbar-shop'):
+        a = shop_el.find('a')
+        if a:
+            a['href'] = '#'
+            a['onclick'] = 'window.scrollTo({top:0, behavior:"smooth"}); return false;'
+
+    # 4. Top menu items: ensure Tea is included alongside Dates, Ghee, Honey, Nuts, Oil, Shutki, Spices
+    menu = soup.find('ul', id='menu-products-menu')
+    if menu:
+        # Check if tea exists
+        if not menu.find(lambda el: el.name == 'a' and 'tea' in el.get('href', '').lower()):
+            tea_li = soup.new_tag('li', id='menu-item-tea', **{'class': 'menu-item menu-item-type-taxonomy menu-item-object-product_cat item-level-0 menu-simple-dropdown wd-event-hover'})
+            tea_a = soup.new_tag('a', href='javascript:void(0)', onclick="window.DeshiMart.scrollToCategory('tea'); return false;", **{'class': 'woodmart-nav-link'})
+            tea_span = soup.new_tag('span', **{'class': 'nav-link-text'})
+            tea_span.string = 'Tea'
+            tea_a.append(tea_span)
+            tea_li.append(tea_a)
+            menu.append(tea_li)
+
+    # 5. Update all category links (nav, grid, carousel)
+    for a in soup.find_all('a'):
+        href = a.get('href', '')
+        if 'category/' in href:
+            slug = href.strip('/').split('/')[-1]
+            a['href'] = 'javascript:void(0)'
+            a['onclick'] = f"window.DeshiMart.scrollToCategory('{slug}'); return false;"
+        elif 'demo7.itservicelab.com' in href and not any(s in href for s in ['facebook.com', 'x.com', 'linkedin.com', 'telegram.me', 'pinterest.com']):
+            a['href'] = 'javascript:void(0)'
+
+    # 6. Realign Homepage Sections:
+    # 6a. Section 'All Honey/Dates' -> Purely Honey & Dates products!
+    # IDs: 530 (Kalmi Dates), 536 (Sundarbans Honey), 528 (Karkuma Honey), 537 (Maryam Dates), 527 (Dabur Honey), 529 (Khurma Dates)
+    for h in soup.find_all('h2', class_='elementor-heading-title'):
+        if 'All Honey/Dates' in h.get_text():
+            parent = h.find_parent('div', class_='elementor-element')
+            while parent and not parent.find(class_='wd-carousel-wrap'):
+                parent = parent.parent
+            if parent:
+                c_wrap = parent.find(class_='wd-carousel-wrap')
+                if c_wrap:
+                    c_wrap.clear()
+                    honey_dates_ids = [530, 536, 528, 537, 527, 529]
+                    for idx, pid in enumerate(honey_dates_ids, 1):
+                        if pid in prod_map:
+                            c_card = BeautifulSoup(render_card_html(prod_map[pid], idx, is_carousel=True), 'html.parser')
+                            c_wrap.append(c_card)
+
+        # 6b. Section 'All Exclusive Products' -> Pure Oils & Exclusive Items!
+        # IDs: 538 (Mustard Oil), 453 (Sesame Oil), 450 (Rose Oil), 541 (Mixed Nuts), 542 (Pumpkin Seeds), 543 (Spices Combo), 459 (Moringa Tea)
+        elif 'All Exclusive Products' in h.get_text():
+            parent = h.find_parent('div', class_='elementor-element')
+            while parent and not parent.find(class_='wd-carousel-wrap'):
+                parent = parent.parent
+            if parent:
+                c_wrap = parent.find(class_='wd-carousel-wrap')
+                if c_wrap:
+                    c_wrap.clear()
+                    exclusive_ids = [538, 453, 450, 541, 542, 543, 459]
+                    for idx, pid in enumerate(exclusive_ids, 1):
+                        if pid in prod_map:
+                            c_card = BeautifulSoup(render_card_html(prod_map[pid], idx, is_carousel=True), 'html.parser')
+                            c_wrap.append(c_card)
+
+        # 6c. Section 'All Products' -> Add Category Filter Bar and all 25 Products!
+        elif 'All Products' in h.get_text():
+            parent = h.find_parent('div', class_='elementor-element')
+            while parent and not parent.find(class_='products'):
+                parent = parent.parent
+            if parent:
+                p_grid = parent.find(class_='products')
+                if p_grid:
+                    # Add filter tabs above the grid if not already present
+                    filter_nav_html = '''
+<div class="wd-category-filter-wrap" style="width:100%; margin-bottom:25px;">
+  <ul class="wd-category-filter-nav">
+    <li><button type="button" class="wd-category-filter-btn active" data-cat="all" onclick="window.DeshiMart.filterCategory('all', this); return false;">সব পণ্য</button></li>
+    <li><button type="button" class="wd-category-filter-btn" data-cat="ghee" onclick="window.DeshiMart.filterCategory('ghee', this); return false;">গাওয়া ঘি</button></li>
+    <li><button type="button" class="wd-category-filter-btn" data-cat="honey" onclick="window.DeshiMart.filterCategory('honey', this); return false;">খাঁটি মধু</button></li>
+    <li><button type="button" class="wd-category-filter-btn" data-cat="dates" onclick="window.DeshiMart.filterCategory('dates', this); return false;">খেজুর</button></li>
+    <li><button type="button" class="wd-category-filter-btn" data-cat="oil" onclick="window.DeshiMart.filterCategory('oil', this); return false;">খাঁটি তেল</button></li>
+    <li><button type="button" class="wd-category-filter-btn" data-cat="tea" onclick="window.DeshiMart.filterCategory('tea', this); return false;">চা পাতা</button></li>
+    <li><button type="button" class="wd-category-filter-btn" data-cat="nuts" onclick="window.DeshiMart.filterCategory('nuts', this); return false;">বাদাম ও বীজ</button></li>
+    <li><button type="button" class="wd-category-filter-btn" data-cat="spices" onclick="window.DeshiMart.filterCategory('spices', this); return false;">মসলা</button></li>
+    <li><button type="button" class="wd-category-filter-btn" data-cat="shutki" onclick="window.DeshiMart.filterCategory('shutki', this); return false;">শুঁটকি</button></li>
+  </ul>
+</div>
+'''
+                    filter_soup = BeautifulSoup(filter_nav_html, 'html.parser')
+                    p_grid.insert_before(filter_soup)
+
+                    # Populate grid with all 25 distinct products
+                    p_grid.clear()
+                    # Reorder so each category has prime visibility
+                    ordered_ids = [
+                        533, 538, 530, 528, 459, 541, 543, 545, # Highlight 1 of each category
+                        534, 453, 536, 537, 458, 542, 544, 546, # Second of each category
+                        532, 450, 527, 529, 540, 531, 446, 535, 463
+                    ]
+                    for idx, pid in enumerate(ordered_ids, 1):
+                        if pid in prod_map:
+                            grid_card = BeautifulSoup(render_card_html(prod_map[pid], idx, is_carousel=False), 'html.parser')
+                            p_grid.append(grid_card)
+
+    # 7. Bind real product handlers to all cards
+    cards = soup.find_all(class_='wd-product')
+    for card in cards:
+        pid = card.get('data-id')
+        if not pid:
+            continue
+        int_pid = int(pid) if pid.isdigit() else 0
+        if int_pid in prod_map:
+            card['data-category'] = prod_map[int_pid]['category']
+
+        # Image link
+        img_link = card.find('a', class_='wd-product-img-link')
+        if img_link:
+            img_link['href'] = 'javascript:void(0)'
+            img_link['onclick'] = f'window.DeshiMart.openQuickView({pid}); return false;'
+
+        # Quick view link
+        qv_link = card.find('a', class_='open-quick-view')
+        if qv_link:
+            qv_link['href'] = 'javascript:void(0)'
+            qv_link['onclick'] = f'window.DeshiMart.openQuickView({pid}); return false;'
+
+        # Title link
+        title_wrap = card.find(class_='wd-loop-prod-title')
+        if title_wrap:
+            t_link = title_wrap.find('a')
+            if t_link:
+                t_link['href'] = 'javascript:void(0)'
+                t_link['onclick'] = f'window.DeshiMart.openQuickView({pid}); return false;'
+
+        # Select options / Add to Cart button
+        btn = card.find('a', class_='add_to_cart_button')
+        if btn:
+            btn['href'] = 'javascript:void(0)'
+            btn['onclick'] = f'window.DeshiMart.addProductToCartFromCard({pid}, this); return false;'
+
+        # Buy Now button
+        buy_btn = card.find('a', class_='isl-loop-buy-now')
+        if buy_btn:
+            buy_btn['href'] = 'javascript:void(0)'
+            buy_btn['onclick'] = f'window.DeshiMart.quickBuyNow({pid}); return false;'
+
+    # 8. Ensure woodmart-loaded class on all slides so backgrounds appear immediately
+    for slide in soup.find_all(class_='wd-slide'):
+        classes = slide.get('class', [])
+        if 'woodmart-loaded' not in classes:
+            classes.append('woodmart-loaded')
+            slide['class'] = classes
+
+    html = str(soup)
+
+    # 9. Slide backgrounds, Cart Badge & Category Filter Styling in head
+    extra_slide_style = '''
+<style id="custom-slide-bg-css">
+/* Authentic 100% same-to-same WoodMart Slide Backgrounds */
+#slide-106 .wd-slide-bg, #slide-106.woodmart-loaded .wd-slide-bg { background-image:url(./wp-content/uploads/2026/08/banner-4.webp) !important; background-size:cover !important; background-position:center !important; }
+#slide-110 .wd-slide-bg, #slide-110.woodmart-loaded .wd-slide-bg { background-image:url(./wp-content/uploads/2026/08/banner-3.webp) !important; background-size:cover !important; background-position:center !important; }
+#slide-111 .wd-slide-bg, #slide-111.woodmart-loaded .wd-slide-bg { background-image:url(./wp-content/uploads/2026/08/banner-2.webp) !important; background-size:cover !important; background-position:center !important; }
+#slide-361 .wd-slide-bg, #slide-361.woodmart-loaded .wd-slide-bg { background-image:url(./wp-content/uploads/2026/08/banner-1.webp) !important; background-size:cover !important; background-position:center !important; }
+
+/* Pixel Perfect Cart Icon Badge - Matching Image 4 */
+.wd-header-cart .wd-tools-count, 
+.whb-col-right .wd-cart-number, 
+.wd-toolbar-cart .wd-tools-count {
+  position: absolute !important;
+  top: -6px !important;
+  right: -8px !important;
+  background-color: #f57224 !important;
+  color: #ffffff !important;
+  border-radius: 50% !important;
+  min-width: 18px !important;
+  height: 18px !important;
+  padding: 0 4px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  box-shadow: 0 2px 5px rgba(245, 114, 36, 0.4) !important;
+  z-index: 5 !important;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+/* Category Filter Navigation Bar */
+.wd-category-filter-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 15px 0 25px 0;
+  padding: 0;
+  list-style: none;
+}
+.wd-category-filter-btn {
+  display: inline-block;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+  background: #f8f9fa;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  font-family: inherit;
+}
+.wd-category-filter-btn:hover {
+  color: var(--wd-primary-color, #78a206);
+  border-color: var(--wd-primary-color, #78a206);
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+.wd-category-filter-btn.active {
+  color: #ffffff !important;
+  background-color: var(--wd-primary-color, #78a206) !important;
+  border-color: var(--wd-primary-color, #78a206) !important;
+  box-shadow: 0 3px 8px rgba(120, 162, 6, 0.3) !important;
+}
+
+/* Cart Badge Bounce Animation */
+.wd-cart-badge-bounce {
+  animation: wdBadgeBounce 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+@keyframes wdBadgeBounce {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.45); }
+  100% { transform: scale(1); }
+}
+
+/* Smooth Category Filter Card Animations */
+.wd-product.wd-cat-hidden {
+  display: none !important;
+}
+.wd-product.wd-cat-visible {
+  animation: wdFadeInUp 0.35s ease forwards;
+}
+@keyframes wdFadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+'''
+    html = html.replace('</head>', extra_slide_style + '\n</head>')
+
+    # 10. Load template_921.html and template_1010.html
+    with open('template_921.html', 'r', encoding='utf-8') as f:
+        t921 = f.read()
+    with open('template_1010.html', 'r', encoding='utf-8') as f:
+        t1010 = f.read()
+
+    templates_and_modals = f'''
+<!-- Template Layout 921 -->
+<template id="template-layout-921">
+{t921}
+</template>
+
+<!-- Template Layout 1010 -->
+<template id="template-layout-1010">
+{t1010}
+</template>
+
+<!-- WoodMart Quick View Popup Modal (Layout 921) -->
+<div id="wd-quickview-backdrop" class="wd-modal-backdrop" onclick="window.DeshiMart.closeQuickView()"></div>
+<div id="wd-quickview-modal" class="wd-quickview-popup" role="dialog" aria-modal="true">
+  <div class="wd-popup-container">
+    <button class="wd-popup-close-btn" onclick="window.DeshiMart.closeQuickView()" aria-label="Close">✕</button>
+    <div id="wd-quickview-content"></div>
+  </div>
+</div>
+
+<!-- WoodMart Checkout Modal (Layout 1010) -->
+<div id="wd-checkout-backdrop" class="wd-modal-backdrop" onclick="window.DeshiMart.closeCheckout()"></div>
+<div id="wd-checkout-modal" class="wd-checkout-popup" role="dialog" aria-modal="true">
+  <div class="wd-popup-container wd-checkout-container">
+    <button class="wd-popup-close-btn" onclick="window.DeshiMart.closeCheckout()" aria-label="Close">✕</button>
+    <div id="wd-checkout-content"></div>
+  </div>
+</div>
+
+<!-- Order Confirmation Success Modal -->
+<div id="wd-order-success-modal" class="wd-modal-backdrop">
+  <div class="wd-order-success-card">
+    <div class="wd-success-icon-wrap">
+      <svg class="wd-check-svg" viewBox="0 0 52 52">
+        <circle class="wd-check-circle" cx="26" cy="26" r="25" fill="none"/>
+        <path class="wd-check-path" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+      </svg>
+    </div>
+    <h3 class="wd-success-title">অর্ডার সফলভাবে গ্রহণ করা হয়েছে!</h3>
+    <p class="wd-success-subtitle">ধন্যবাদ! আমাদের প্রতিনিধি খুব শীঘ্রই আপনার ঠিকানায় ডেলিভারির বিষয়ে যোগাযোগ করবেন।</p>
+    <div id="wd-order-invoice-details" class="wd-invoice-box"></div>
+    <button class="button" style="background:var(--wd-primary-color); color:#fff; border:none; padding:12px 24px; border-radius:4px; font-weight:700; cursor:pointer; margin-top:20px; width:100%;" onclick="window.DeshiMart.closeOrderSuccess()">নতুন অর্ডার করুন</button>
+  </div>
+</div>
+
+<script src="js/products-data.js"></script>
+<script src="js/app.js"></script>
+'''
+
+    html = html.replace('</body>', templates_and_modals + '\n</body>')
+
+    # 11. Clean any remaining banned emojis
+    for em in ['🔥', '🌿', '🔒', '⚡', '✨', '🛒', '📦', '⭐']:
+        html = html.replace(em, '')
+
+    with open('index.html', 'w', encoding='utf-8') as f:
+        f.write(html)
+
+    print('Successfully generated final index.html! File size:', os.path.getsize('index.html'))
+
+if __name__ == '__main__':
+    main()

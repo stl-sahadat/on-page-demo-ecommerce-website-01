@@ -1,0 +1,1447 @@
+.elementor-1010 .elementor-element.elementor-element-eed94a9{--display:flex;--flex-direction:row;--container-widget-width:initial;--container-widget-height:100%;--container-widget-flex-grow:1;--container-widget-align-self:stretch;--flex-wrap-mobile:wrap;--gap:30px 40px;--row-gap:30px;--column-gap:40px;--margin-top:0px;--margin-bottom:20px;--margin-left:0px;--margin-right:0px;--padding-top:0px;--padding-bottom:0px;--padding-left:0px;--padding-right:0px;}.elementor-1010 .elementor-element.elementor-element-dfeec85{--display:flex;border-style:none;--border-style:none;--border-radius:10px 10px 10px 10px;--padding-top:0px;--padding-bottom:0px;--padding-left:0px;--padding-right:0px;}.elementor-widget-heading .elementor-heading-title{font-family:var( --e-global-typography-primary-font-family ), Sans-serif;font-weight:var( --e-global-typography-primary-font-weight );color:var( --e-global-color-primary );}.elementor-1010 .elementor-element.elementor-element-63b8ef0 .elementor-heading-title{font-family:"Roboto", Sans-serif;font-size:20px;font-weight:600;color:#070707;}.elementor-1010 .elementor-element.elementor-element-7e63263{--display:flex;--padding-top:0px;--padding-bottom:0px;--padding-left:0px;--padding-right:0px;}.elementor-1010 .elementor-element.elementor-element-c0e2144{--display:flex;--padding-top:20px;--padding-bottom:20px;--padding-left:0px;--padding-right:0px;}.elementor-1010 .elementor-element.elementor-element-c0e2144:not(.elementor-motion-effects-element-type-background), .elementor-1010 .elementor-element.elementor-element-c0e2144 > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#F8F8F8;}.elementor-1010 .elementor-element.elementor-element-c0e2144.e-con{--flex-grow:0;--flex-shrink:0;}.elementor-1010 .elementor-element.elementor-element-ab7f7a3 .title{font-size:20px;}.elementor-1010 .elementor-element.elementor-element-e6d0b89 > .elementor-widget-container{background-color:#FFFFFF;padding:5px 0px 5px 0px;}.elementor-1010 .elementor-element.elementor-element-1556710 > .elementor-widget-container{margin:-29px 0px 0px 0px;}.elementor-1010 .elementor-element.elementor-element-1556710 .payment_box{background-color:#FFFFFF;}.elementor-1010 .elementor-element.elementor-element-1556710 .payment_box:before{color:#FFFFFF;}.elementor-1010 .elementor-element.elementor-element-1556710 .woocommerce-terms-and-conditions{background-color:#FFFFFF;}@media(max-width:1024px){.elementor-1010 .elementor-element.elementor-element-eed94a9{--gap:30px 30px;--row-gap:30px;--column-gap:30px;}}@media(max-width:767px){.elementor-1010 .elementor-element.elementor-element-eed94a9{--flex-direction:column;--container-widget-width:100%;--container-widget-height:initial;--container-widget-flex-grow:0;--container-widget-align-self:initial;--flex-wrap-mobile:wrap;--padding-top:0px;--padding-bottom:0px;--padding-left:0px;--padding-right:0px;}}@media(min-width:768px){.elementor-1010 .elementor-element.elementor-element-dfeec85{--width:50%;}.elementor-1010 .elementor-element.elementor-element-7e63263{--width:50%;}.elementor-1010 .elementor-element.elementor-element-c0e2144{--width:100.241%;}}@media(max-width:1024px) and (min-width:768px){.elementor-1010 .elementor-element.elementor-element-dfeec85{--width:100%;}.elementor-1010 .elementor-element.elementor-element-7e63263{--width:100%;}}/* Start custom CSS for wd_checkout_billing_details_form, class: .elementor-element-d1e0cb7 *//* =========================================================
+   WOODMART CHECKOUT - BILLING DETAILS
+   FULL FIELD STYLE + ICONS
+   Layout Builder > Billing Details > Custom CSS
+   ========================================================= */
+
+
+/* =========================
+   FIELD WRAPPER
+   ========================= */
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 .form-row {
+    position: relative !important;
+    width: 100% !important;
+    margin: 0 0 14px !important;
+}
+
+
+/* =========================
+   LABEL
+   ========================= */
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 .form-row label {
+    display: block !important;
+    margin: 0 0 7px !important;
+
+    color: #111111 !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+}
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 .required {
+    color: #e30613 !important;
+    text-decoration: none !important;
+}
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 .optional {
+    color: #999999 !important;
+    font-weight: 500 !important;
+}
+
+
+/* =========================
+   ALL NORMAL INPUTS
+   ========================= */
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 input.input-text,
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 textarea.input-text {
+    width: 100% !important;
+    min-height: 46px !important;
+
+    padding: 0 15px 0 48px !important;
+
+    background-color: #ffffff !important;
+    background-repeat: no-repeat !important;
+    background-position: 15px center !important;
+    background-size: 18px 18px !important;
+
+    border: 1px solid #dddddd !important;
+    border-radius: 8px !important;
+
+    box-shadow: none !important;
+    outline: none !important;
+
+    color: #111111 !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+
+    transition: border-color .2s ease,
+                box-shadow .2s ease !important;
+}
+
+
+/* Focus */
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 input.input-text:focus,
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 textarea.input-text:focus {
+    border-color: #19758d !important;
+    box-shadow: 0 0 0 2px rgba(25,117,141,.08) !important;
+}
+
+
+/* Placeholder */
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 input.input-text::placeholder,
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 textarea.input-text::placeholder {
+    color: #999999 !important;
+    opacity: 1 !important;
+}
+
+
+/* =========================================================
+   FIRST NAME / FULL NAME ICON
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 #billing_first_name {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 21a8 8 0 0 1 16 0'/%3E%3C/svg%3E") !important;
+}
+
+
+/* =========================================================
+   LAST NAME ICON
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 #billing_last_name {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 21a8 8 0 0 1 16 0'/%3E%3C/svg%3E") !important;
+}
+
+
+/* =========================================================
+   COMPANY ICON
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 #billing_company {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='3' width='14' height='18' rx='1'/%3E%3Cpath d='M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2'/%3E%3C/svg%3E") !important;
+}
+
+
+/* =========================================================
+   FULL ADDRESS ICON
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 #billing_address_1 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z'/%3E%3Ccircle cx='12' cy='10' r='2.5'/%3E%3C/svg%3E") !important;
+}
+
+
+/* =========================================================
+   ADDRESS LINE 2 ICON
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 #billing_address_2 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 21h18'/%3E%3Cpath d='M5 21V8l7-4v17'/%3E%3Cpath d='M12 21V11l7-3v13'/%3E%3C/svg%3E") !important;
+}
+
+
+/* =========================================================
+   PHONE ICON
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 #billing_phone {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92Z'/%3E%3C/svg%3E") !important;
+}
+
+
+/* =========================================================
+   EMAIL ICON
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 #billing_email {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='14' rx='2'/%3E%3Cpath d='m3 7 9 6 9-6'/%3E%3C/svg%3E") !important;
+}
+
+
+/* =========================================================
+   TOWN / CITY ICON
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 #billing_city {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 21h18'/%3E%3Cpath d='M5 21V8l7-4v17'/%3E%3Cpath d='M12 21V11l7-3v13'/%3E%3Cpath d='M8 10h1M8 14h1M8 18h1M15 13h1M15 17h1'/%3E%3C/svg%3E") !important;
+}
+
+
+/* =========================================================
+   DISTRICT ICON
+   Normal input version
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 #billing_state.input-text,
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 input#billing_state {
+    padding-left: 48px !important;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z'/%3E%3Ccircle cx='12' cy='10' r='2.5'/%3E%3C/svg%3E") !important;
+
+    background-repeat: no-repeat !important;
+    background-position: 15px center !important;
+    background-size: 18px 18px !important;
+}
+
+
+/* =========================================================
+   SELECT2 BASE
+   Country / District dropdown
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 .select2-container {
+    width: 100% !important;
+}
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 .select2-selection--single {
+    width: 100% !important;
+    min-height: 46px !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    padding: 0 42px 0 48px !important;
+
+    background-color: #ffffff !important;
+    background-repeat: no-repeat !important;
+    background-position: 15px center !important;
+    background-size: 18px 18px !important;
+
+    border: 1px solid #dddddd !important;
+    border-radius: 8px !important;
+
+    box-shadow: none !important;
+}
+
+
+/* =========================================================
+   DISTRICT ICON
+   Select2 dropdown version
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 #billing_state_field .select2-selection--single,
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 #billing_state_field .select2-selection {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z'/%3E%3Ccircle cx='12' cy='10' r='2.5'/%3E%3C/svg%3E") !important;
+
+    background-repeat: no-repeat !important;
+    background-position: 15px center !important;
+    background-size: 18px 18px !important;
+
+    padding-left: 48px !important;
+}
+
+
+/* =========================================================
+   COUNTRY ICON
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 #billing_country_field .select2-selection--single {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18'/%3E%3C/svg%3E") !important;
+}
+
+
+/* =========================
+   SELECT2 TEXT
+   ========================= */
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 .select2-selection__rendered {
+    padding: 0 !important;
+
+    color: #111111 !important;
+    font-size: 14px !important;
+
+    line-height: normal !important;
+}
+
+
+/* Select arrow */
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 .select2-selection__arrow {
+    top: 50% !important;
+    right: 12px !important;
+
+    transform: translateY(-50%) !important;
+}
+
+
+/* Select focus */
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 .select2-container--open .select2-selection--single {
+    border-color: #19758d !important;
+    box-shadow: 0 0 0 2px rgba(25,117,141,.08) !important;
+}
+
+
+/* =========================================================
+   TEXTAREA
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-d1e0cb7 textarea.input-text {
+    min-height: 90px !important;
+
+    padding-top: 13px !important;
+    padding-bottom: 13px !important;
+
+    resize: vertical !important;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    .elementor-1010 .elementor-element.elementor-element-d1e0cb7 .form-row {
+        margin-bottom: 12px !important;
+    }
+
+    .elementor-1010 .elementor-element.elementor-element-d1e0cb7 .form-row label {
+        margin-bottom: 6px !important;
+        font-size: 13px !important;
+    }
+
+    .elementor-1010 .elementor-element.elementor-element-d1e0cb7 input.input-text,
+    .elementor-1010 .elementor-element.elementor-element-d1e0cb7 textarea.input-text {
+        min-height: 44px !important;
+
+        padding-left: 43px !important;
+
+        background-position: 13px center !important;
+        background-size: 17px 17px !important;
+
+        border-radius: 8px !important;
+
+        font-size: 13px !important;
+    }
+
+    .elementor-1010 .elementor-element.elementor-element-d1e0cb7 .select2-selection--single {
+        min-height: 44px !important;
+
+        padding-left: 43px !important;
+
+        background-position: 13px center !important;
+        background-size: 17px 17px !important;
+
+        border-radius: 8px !important;
+    }
+
+    /* District mobile */
+    .elementor-1010 .elementor-element.elementor-element-d1e0cb7 #billing_state.input-text,
+    .elementor-1010 .elementor-element.elementor-element-d1e0cb7 input#billing_state,
+    .elementor-1010 .elementor-element.elementor-element-d1e0cb7 #billing_state_field .select2-selection--single,
+    .elementor-1010 .elementor-element.elementor-element-d1e0cb7 #billing_state_field .select2-selection {
+        padding-left: 43px !important;
+
+        background-position: 13px center !important;
+        background-size: 17px 17px !important;
+    }
+
+    .elementor-1010 .elementor-element.elementor-element-d1e0cb7 .select2-selection__rendered {
+        font-size: 13px !important;
+    }
+}/* End custom CSS */
+/* Start custom CSS for container, class: .elementor-element-dfeec85 *//* =========================================================
+   PREMIUM BILLING DETAILS CONTAINER
+   WoodMart Layout Builder > Billing Details > Custom CSS
+   ========================================================= */
+
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 {
+    position: relative !important;
+
+    padding: 26px !important;
+
+    background: #ffffff !important;
+
+    border: 1px solid #e8e8e8 !important;
+    border-radius: 12px !important;
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.045) !important;
+}
+
+
+/* =========================================================
+   BILLING TITLE
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 .woocommerce-billing-fields > h3 {
+    margin: 0 0 22px !important;
+
+    color: #111111 !important;
+
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    line-height: 1.3 !important;
+}
+
+
+/* =========================================================
+   FIELDS AREA
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 .woocommerce-billing-fields__field-wrapper {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0 !important;
+}
+
+
+/* =========================================================
+   FIELD WRAPPER
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 .form-row {
+    position: relative !important;
+
+    width: 100% !important;
+
+    margin: 0 0 17px !important;
+    padding: 0 !important;
+}
+
+
+/* Force full width */
+.elementor-1010 .elementor-element.elementor-element-dfeec85 .form-row-first,
+.elementor-1010 .elementor-element.elementor-element-dfeec85 .form-row-last,
+.elementor-1010 .elementor-element.elementor-element-dfeec85 .form-row-wide {
+    width: 100% !important;
+    float: none !important;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 .form-row label {
+    display: block !important;
+
+    margin: 0 0 7px !important;
+
+    color: #171717 !important;
+
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+}
+
+
+/* Required */
+.elementor-1010 .elementor-element.elementor-element-dfeec85 .required {
+    color: #e30613 !important;
+    text-decoration: none !important;
+}
+
+
+/* Optional */
+.elementor-1010 .elementor-element.elementor-element-dfeec85 .optional {
+    color: #9b9b9b !important;
+
+    font-size: 11px !important;
+    font-weight: 500 !important;
+}
+
+
+/* =========================================================
+   ALL INPUTS
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 input.input-text,
+.elementor-1010 .elementor-element.elementor-element-dfeec85 textarea.input-text {
+    width: 100% !important;
+
+    height: 48px !important;
+
+    padding: 0 16px 0 50px !important;
+
+    background-color: #ffffff !important;
+
+    background-repeat: no-repeat !important;
+    background-position: 16px center !important;
+    background-size: 18px 18px !important;
+
+    border: 1px solid #e1e1e1 !important;
+    border-radius: 8px !important;
+
+    outline: none !important;
+
+    color: #222222 !important;
+
+    font-size: 13px !important;
+    font-weight: 500 !important;
+
+    box-shadow: 0 2px 5px rgba(0,0,0,.018) !important;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease !important;
+}
+
+
+/* Hover */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 input.input-text:hover,
+.elementor-1010 .elementor-element.elementor-element-dfeec85 textarea.input-text:hover {
+    border-color: #cccccc !important;
+}
+
+
+/* Focus */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 input.input-text:focus,
+.elementor-1010 .elementor-element.elementor-element-dfeec85 textarea.input-text:focus {
+    border-color: #19758d !important;
+
+    box-shadow:
+        0 0 0 3px rgba(25,117,141,.07) !important;
+}
+
+
+/* Placeholder */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 input.input-text::placeholder,
+.elementor-1010 .elementor-element.elementor-element-dfeec85 textarea.input-text::placeholder {
+    color: #a0a0a0 !important;
+
+    font-weight: 400 !important;
+
+    opacity: 1 !important;
+}
+
+
+/* =========================================================
+   FULL NAME ICON
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 #billing_first_name {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 21a8 8 0 0 1 16 0'/%3E%3C/svg%3E") !important;
+}
+
+
+/* =========================================================
+   LAST NAME ICON
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 #billing_last_name {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 21a8 8 0 0 1 16 0'/%3E%3C/svg%3E") !important;
+}
+
+
+/* =========================================================
+   PHONE ICON
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 #billing_phone {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92Z'/%3E%3C/svg%3E") !important;
+}
+
+
+/* =========================================================
+   FULL ADDRESS ICON
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 #billing_address_1 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z'/%3E%3Ccircle cx='12' cy='10' r='2.5'/%3E%3C/svg%3E") !important;
+}
+
+
+/* =========================================================
+   TOWN / CITY ICON
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 #billing_city {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 21h18'/%3E%3Cpath d='M5 21V8l7-4v17'/%3E%3Cpath d='M12 21V11l7-3v13'/%3E%3Cpath d='M8 10h1M8 14h1M15 13h1M15 17h1'/%3E%3C/svg%3E") !important;
+}
+
+
+/* =========================================================
+   EMAIL ICON
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 #billing_email {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='14' rx='2'/%3E%3Cpath d='m3 7 9 6 9-6'/%3E%3C/svg%3E") !important;
+}
+
+
+/* =========================================================
+   DISTRICT - NORMAL INPUT
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 #billing_state.input-text,
+.elementor-1010 .elementor-element.elementor-element-dfeec85 input#billing_state {
+    padding-left: 50px !important;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z'/%3E%3Ccircle cx='12' cy='10' r='2.5'/%3E%3C/svg%3E") !important;
+
+    background-repeat: no-repeat !important;
+    background-position: 16px center !important;
+    background-size: 18px 18px !important;
+}
+
+
+/* =========================================================
+   DISTRICT SELECT2
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 .select2-container {
+    width: 100% !important;
+}
+
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 .select2-selection--single {
+    width: 100% !important;
+    height: 48px !important;
+    min-height: 48px !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    padding: 0 42px 0 50px !important;
+
+    background-color: #ffffff !important;
+
+    border: 1px solid #e1e1e1 !important;
+    border-radius: 8px !important;
+
+    box-shadow: 0 2px 5px rgba(0,0,0,.018) !important;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease !important;
+}
+
+
+/* District location icon */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 #billing_state_field .select2-selection--single {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z'/%3E%3Ccircle cx='12' cy='10' r='2.5'/%3E%3C/svg%3E") !important;
+
+    background-repeat: no-repeat !important;
+    background-position: 16px center !important;
+    background-size: 18px 18px !important;
+}
+
+
+/* District text */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 #billing_state_field .select2-selection__rendered {
+    padding: 0 !important;
+
+    color: #222222 !important;
+
+    font-size: 13px !important;
+    font-weight: 500 !important;
+
+    line-height: normal !important;
+}
+
+
+/* Arrow */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 #billing_state_field .select2-selection__arrow {
+    top: 50% !important;
+    right: 13px !important;
+
+    transform: translateY(-50%) !important;
+}
+
+
+/* Open / focus */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 #billing_state_field
+.select2-container--open
+.select2-selection--single {
+    border-color: #19758d !important;
+
+    box-shadow:
+        0 0 0 3px rgba(25,117,141,.07) !important;
+}
+
+
+/* =========================================================
+   ORDER NOTES
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 textarea.input-text {
+    height: auto !important;
+    min-height: 90px !important;
+
+    padding: 13px 15px !important;
+
+    background-image: none !important;
+
+    line-height: 1.5 !important;
+
+    resize: vertical !important;
+}
+
+
+/* =========================================================
+   SHIP TO DIFFERENT ADDRESS
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 .woocommerce-shipping-fields {
+    margin-top: 3px !important;
+}
+
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 .woocommerce-shipping-fields label {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+}
+
+
+/* Checkbox */
+
+.elementor-1010 .elementor-element.elementor-element-dfeec85 input[type="checkbox"] {
+    accent-color: #19758d !important;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    .elementor-1010 .elementor-element.elementor-element-dfeec85 {
+        padding: 18px 14px !important;
+
+        border-radius: 10px !important;
+
+        box-shadow:
+            0 5px 20px rgba(0,0,0,.04) !important;
+    }
+
+
+    .elementor-1010 .elementor-element.elementor-element-dfeec85 .woocommerce-billing-fields > h3 {
+        margin-bottom: 17px !important;
+
+        font-size: 18px !important;
+    }
+
+
+    .elementor-1010 .elementor-element.elementor-element-dfeec85 .form-row {
+        margin-bottom: 13px !important;
+    }
+
+
+    .elementor-1010 .elementor-element.elementor-element-dfeec85 .form-row label {
+        margin-bottom: 6px !important;
+
+        font-size: 12px !important;
+    }
+
+
+    .elementor-1010 .elementor-element.elementor-element-dfeec85 input.input-text {
+        height: 45px !important;
+
+        padding-left: 45px !important;
+
+        background-position: 14px center !important;
+        background-size: 17px 17px !important;
+
+        border-radius: 7px !important;
+
+        font-size: 13px !important;
+    }
+
+
+    .elementor-1010 .elementor-element.elementor-element-dfeec85 .select2-selection--single {
+        height: 45px !important;
+        min-height: 45px !important;
+
+        padding-left: 45px !important;
+
+        background-position: 14px center !important;
+        background-size: 17px 17px !important;
+
+        border-radius: 7px !important;
+    }
+
+
+    .elementor-1010 .elementor-element.elementor-element-dfeec85 #billing_state_field .select2-selection__rendered {
+        font-size: 13px !important;
+    }
+
+
+    .elementor-1010 .elementor-element.elementor-element-dfeec85 textarea.input-text {
+        min-height: 75px !important;
+
+        padding: 11px 13px !important;
+    }
+}/* End custom CSS */
+/* Start custom CSS for wd_checkout_order_review, class: .elementor-element-e6d0b89 *//* Hide Estimated Delivery - Cart & Checkout only */
+
+.woocommerce-cart .wd-product-detail.wd-delivery-detail,
+.woocommerce-checkout .wd-product-detail.wd-delivery-detail {
+    display: none !important;
+}
+
+/* =====================================
+   CHECKOUT SHIPPING LAYOUT FIX
+   Shipment title top
+   Radio options below
+   ===================================== */
+
+
+/* Shipping row make block */
+
+.woocommerce-checkout-review-order-table 
+.woocommerce-shipping-totals.shipping {
+
+    display:block !important;
+
+}
+
+
+/* Shipment heading */
+
+.woocommerce-checkout-review-order-table 
+.woocommerce-shipping-totals.shipping th {
+
+    display:block !important;
+
+    width:100% !important;
+
+    padding-bottom:15px !important;
+
+    text-align:left !important;
+
+    font-size:16px !important;
+
+    font-weight:700 !important;
+
+}
+
+
+
+/* Shipping options area */
+
+.woocommerce-checkout-review-order-table 
+.woocommerce-shipping-totals.shipping td {
+
+    display:block !important;
+
+    width:100% !important;
+
+    padding:0 !important;
+
+}
+
+
+
+/* Remove default list spacing */
+
+#shipping_method {
+
+    margin:0 !important;
+
+    padding:0 !important;
+
+    list-style:none !important;
+
+}
+
+
+
+/* Each shipping option */
+
+#shipping_method li {
+
+    display:flex !important;
+
+    align-items:center !important;
+
+    gap:10px !important;
+
+    margin-bottom:12px !important;
+
+}
+
+
+
+/* Radio button */
+
+#shipping_method input.shipping_method {
+
+    width:18px !important;
+
+    height:18px !important;
+
+    margin:0 !important;
+
+}
+
+
+
+/* Label */
+
+#shipping_method label {
+
+    margin:0 !important;
+
+    font-size:14px !important;
+
+    font-weight:500 !important;
+
+    cursor:pointer !important;
+
+}
+
+
+/* Price */
+
+#shipping_method .amount {
+
+    font-weight:700 !important;
+
+}/* End custom CSS */
+/* Start custom CSS for container, class: .elementor-element-c0e2144 *//* =====================================
+   CUSTOM RADIO BUTTON FINAL FIX
+   COLOR: #ff6a00
+   REMOVE BLACK BORDER
+   ===================================== */
+
+
+/* ==========================
+   SHIPPING RADIO
+   ========================== */
+
+#shipping_method input.shipping_method,
+
+/* ==========================
+   PAYMENT RADIO
+   ========================== */
+
+.woocommerce-checkout 
+#payment input.input-radio {
+
+
+    appearance:none !important;
+    -webkit-appearance:none !important;
+    -moz-appearance:none !important;
+
+
+    width:18px !important;
+    height:18px !important;
+
+
+    border:2px solid #ff6a00 !important;
+
+    outline:none !important;
+
+    box-shadow:none !important;
+
+
+    border-radius:50% !important;
+
+
+    background:#ffffff !important;
+
+
+    position:relative !important;
+
+    cursor:pointer !important;
+
+
+    margin:0 8px 0 0 !important;
+
+}
+
+
+
+/* Remove focus black outline */
+
+#shipping_method input.shipping_method:focus,
+
+.woocommerce-checkout 
+#payment input.input-radio:focus {
+
+
+    outline:none !important;
+
+    box-shadow:none !important;
+
+}
+
+
+
+/* Checked */
+
+#shipping_method input.shipping_method:checked,
+
+.woocommerce-checkout 
+#payment input.input-radio:checked {
+
+
+    background:#ff6a00 !important;
+
+    border-color:#ff6a00 !important;
+
+}
+
+
+
+/* Inner white dot */
+
+#shipping_method input.shipping_method:checked::after,
+
+.woocommerce-checkout 
+#payment input.input-radio:checked::after {
+
+
+    content:"" !important;
+
+
+    position:absolute !important;
+
+
+    width:6px !important;
+
+    height:6px !important;
+
+
+    background:#ffffff !important;
+
+
+    border-radius:50% !important;
+
+
+    top:50% !important;
+
+    left:50% !important;
+
+
+    transform:translate(-50%,-50%) !important;
+
+}
+
+
+
+/* Hover */
+
+#shipping_method input.shipping_method:hover,
+
+.woocommerce-checkout 
+#payment input.input-radio:hover {
+
+
+    border-color:#ff6a00 !important;
+
+}
+
+
+
+/* Selected text */
+
+#shipping_method input.shipping_method:checked + label,
+
+.woocommerce-checkout 
+#payment input.input-radio:checked + label {
+
+
+    color:#ff6a00 !important;
+
+    font-weight:700 !important;
+
+}/* End custom CSS */
+/* Start custom CSS for container, class: .elementor-element-7e63263 *//* =========================================================
+   WOODMART CHECKOUT - ORDER SUMMARY PREMIUM DESIGN
+   ========================================================= */
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 {
+    background: #ffffff !important;
+    border: 1px solid #e7e7e7 !important;
+    border-radius: 12px !important;
+    padding: 22px !important;
+
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.05) !important;
+}
+
+
+/* =========================
+   YOUR ORDER TITLE
+   ========================= */
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 h3,
+.elementor-1010 .elementor-element.elementor-element-7e63263 .woocommerce-checkout-review-order-title {
+    margin: 0 0 18px !important;
+
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    text-align: left !important;
+
+    color: #111111 !important;
+}
+
+
+/* =========================
+   ORDER TABLE
+   ========================= */
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 table.shop_table {
+    width: 100% !important;
+    margin: 0 !important;
+
+    background: #ffffff !important;
+    border: 0 !important;
+    border-collapse: collapse !important;
+
+    border-radius: 10px !important;
+    overflow: hidden !important;
+}
+
+
+/* Table header */
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 table.shop_table thead th {
+    padding: 12px 10px !important;
+
+    background: #f7f7f7 !important;
+
+    color: #111111 !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+
+    border: 0 !important;
+    border-bottom: 1px solid #e5e5e5 !important;
+}
+
+
+/* Table rows */
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 table.shop_table td,
+.elementor-1010 .elementor-element.elementor-element-7e63263 table.shop_table th {
+    padding: 12px 10px !important;
+
+    border: 0 !important;
+    border-bottom: 1px solid #eeeeee !important;
+
+    vertical-align: middle !important;
+}
+
+
+/* Product name */
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 .product-name {
+    color: #333333 !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+}
+
+
+/* Product total */
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 .product-total {
+    color: #111111 !important;
+    font-weight: 600 !important;
+}
+
+
+/* =========================
+   PRODUCT IMAGE
+   ========================= */
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 .product-name img,
+.elementor-1010 .elementor-element.elementor-element-7e63263 .wd-checkout-prod-img img,
+.elementor-1010 .elementor-element.elementor-element-7e63263 .woocommerce-checkout-review-order-table img {
+    width: 52px !important;
+    height: 62px !important;
+
+    object-fit: cover !important;
+
+    border-radius: 7px !important;
+    margin-right: 10px !important;
+}
+
+
+/* =========================
+   SUBTOTAL / TOTAL
+   ========================= */
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 .cart-subtotal th,
+.elementor-1010 .elementor-element.elementor-element-7e63263 .cart-subtotal td,
+.elementor-1010 .elementor-element.elementor-element-7e63263 .order-total th,
+.elementor-1010 .elementor-element.elementor-element-7e63263 .order-total td {
+    padding-top: 13px !important;
+    padding-bottom: 13px !important;
+}
+
+
+/* Grand total */
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 .order-total th,
+.elementor-1010 .elementor-element.elementor-element-7e63263 .order-total td {
+    font-size: 16px !important;
+    font-weight: 800 !important;
+
+    color: #111111 !important;
+
+    border-top: 2px solid #111111 !important;
+}
+
+
+/* Price color */
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 .woocommerce-Price-amount {
+    color: #F47B20 !important;
+}
+
+
+/* =========================
+   SHIPPING METHODS
+   ========================= */
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 #shipping_method {
+    margin: 8px 0 !important;
+    padding: 0 !important;
+
+    list-style: none !important;
+}
+
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 #shipping_method li {
+    position: relative !important;
+
+    margin: 0 0 8px !important;
+    padding: 11px 12px !important;
+
+    background: #fafafa !important;
+
+    border: 1px solid #e1e1e1 !important;
+    border-radius: 8px !important;
+}
+
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 #shipping_method li:has(input:checked) {
+    border-color: #F47B20 !important;
+    background: rgba(25, 117, 141, 0.05) !important;
+}
+
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 #shipping_method label {
+    margin: 0 !important;
+
+    font-size: 13px !important;
+    font-weight: 600 !important;
+
+    cursor: pointer !important;
+}
+
+
+/* =========================
+   DELIVERY MESSAGE
+   ========================= */
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 .wd-shipping-progress-bar,
+.elementor-1010 .elementor-element.elementor-element-7e63263 .wd-est-del {
+    margin-top: 12px !important;
+    padding: 10px 12px !important;
+
+    background: #f7fafb !important;
+
+    border: 1px solid #e2eaec !important;
+    border-radius: 8px !important;
+
+    font-size: 12px !important;
+}
+
+
+/* =========================
+   PAYMENT SECTION
+   ========================= */
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 #payment {
+    margin-top: 18px !important;
+
+    background: transparent !important;
+    border: 0 !important;
+}
+
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 .wc_payment_methods {
+    margin: 0 !important;
+    padding: 0 !important;
+
+    list-style: none !important;
+}
+
+
+/* Payment option */
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 .wc_payment_method {
+    margin: 0 0 9px !important;
+    padding: 12px 14px !important;
+
+    background: #ffffff !important;
+
+    border: 1px solid #e1e1e1 !important;
+    border-radius: 8px !important;
+
+    transition: .2s ease !important;
+}
+
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 .wc_payment_method:has(input:checked) {
+    border-color: #F47B20 !important;
+    background: rgba(25, 117, 141, 0.04) !important;
+}
+
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 .wc_payment_method label {
+    margin: 0 !important;
+
+    color: #111111 !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+
+    cursor: pointer !important;
+}
+
+
+/* Payment logos */
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 .wc_payment_method img {
+    max-height: 28px !important;
+    width: auto !important;
+
+    margin-left: 8px !important;
+    vertical-align: middle !important;
+}
+
+
+/* Payment description */
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 .payment_box {
+    margin: 10px 0 0 !important;
+    padding: 10px 12px !important;
+
+    background: #f7f7f7 !important;
+
+    border: 0 !important;
+    border-radius: 6px !important;
+
+    color: #666666 !important;
+    font-size: 12px !important;
+}
+
+
+/* Remove payment triangle */
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 .payment_box::before {
+    display: none !important;
+}
+
+
+/* =========================
+   PRIVACY TEXT
+   ========================= */
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 .woocommerce-privacy-policy-text {
+    margin: 15px 0 !important;
+
+    color: #777777 !important;
+    font-size: 11px !important;
+    line-height: 1.6 !important;
+}
+
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 .woocommerce-privacy-policy-text p {
+    margin: 0 !important;
+}
+
+
+/* =========================
+   PLACE ORDER BUTTON
+   ========================= */
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 #place_order {
+    width: 100% !important;
+    height: 50px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    margin-top: 14px !important;
+
+    padding: 0 20px !important;
+
+    background: #F47B20 !important;
+
+    border: 0 !important;
+    border-radius: 8px !important;
+
+    color: #ffffff !important;
+
+    font-size: 14px !important;
+    font-weight: 700 !important;
+
+    box-shadow: none !important;
+
+    transition: .2s ease !important;
+}
+
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 #place_order:hover {
+    background: #111111 !important;
+}
+
+
+/* =========================
+   RADIO BUTTON
+   ========================= */
+
+.elementor-1010 .elementor-element.elementor-element-7e63263 input[type="radio"] {
+    accent-color: #f47b20 !important;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    .elementor-1010 .elementor-element.elementor-element-7e63263 {
+        padding: 14px !important;
+        border-radius: 10px !important;
+    }
+
+    .elementor-1010 .elementor-element.elementor-element-7e63263 h3,
+    .elementor-1010 .elementor-element.elementor-element-7e63263 .woocommerce-checkout-review-order-title {
+        margin-bottom: 14px !important;
+        font-size: 17px !important;
+    }
+
+    .elementor-1010 .elementor-element.elementor-element-7e63263 table.shop_table thead th,
+    .elementor-1010 .elementor-element.elementor-element-7e63263 table.shop_table td,
+    .elementor-1010 .elementor-element.elementor-element-7e63263 table.shop_table th {
+        padding: 10px 6px !important;
+    }
+
+    .elementor-1010 .elementor-element.elementor-element-7e63263 .product-name {
+        font-size: 12px !important;
+    }
+
+    .elementor-1010 .elementor-element.elementor-element-7e63263 .product-name img,
+    .elementor-1010 .elementor-element.elementor-element-7e63263 .wd-checkout-prod-img img,
+    .elementor-1010 .elementor-element.elementor-element-7e63263 .woocommerce-checkout-review-order-table img {
+        width: 45px !important;
+        height: 55px !important;
+    }
+
+    .elementor-1010 .elementor-element.elementor-element-7e63263 #shipping_method li,
+    .elementor-1010 .elementor-element.elementor-element-7e63263 .wc_payment_method {
+        padding: 10px !important;
+    }
+
+    .elementor-1010 .elementor-element.elementor-element-7e63263 #place_order {
+        height: 46px !important;
+
+        font-size: 13px !important;
+        border-radius: 7px !important;
+    }
+}/* End custom CSS */
