@@ -278,6 +278,57 @@ def main():
             classes.append('woodmart-loaded')
             slide['class'] = classes
 
+    # 8b. Performance Optimization 1: Consolidate ALL 150+ separate CSS files into 1 high-speed bundle
+    links = soup.find_all('link', rel=lambda r: r and 'stylesheet' in r)
+    combined_css = []
+    first_link = None
+    for l in links:
+        href = l.get('href', '').split('?')[0].lstrip('./')
+        if os.path.exists(href) and not href.startswith(('http:', 'https:')) and href != 'css/bundle.min.css':
+            with open(href, 'r', encoding='utf-8', errors='ignore') as fp:
+                css_text = fp.read()
+            combined_css.append(f'/* {href} */\n' + css_text)
+            if first_link is None:
+                first_link = l
+            else:
+                l.decompose()
+
+    # Also extract styles from inside template tags (like template 921 and 1010)
+    for tmpl in soup.find_all('template'):
+        for l in tmpl.find_all('link', rel=lambda r: r and 'stylesheet' in r):
+            href = l.get('href', '').split('?')[0].lstrip('./')
+            if os.path.exists(href) and not href.startswith(('http:', 'https:')):
+                with open(href, 'r', encoding='utf-8', errors='ignore') as fp:
+                    combined_css.append(f'/* {href} */\n' + fp.read())
+                l.decompose()
+
+    if combined_css and first_link:
+        os.makedirs('css', exist_ok=True)
+        with open('css/bundle.min.css', 'w', encoding='utf-8') as fp:
+            fp.write('\n'.join(combined_css))
+        first_link['href'] = 'css/bundle.min.css'
+        first_link['id'] = 'woodmart-bundle-css'
+
+    # Deduplicate any remaining external links
+    seen_hrefs = set()
+    for l in soup.find_all('link', rel=lambda r: r and 'stylesheet' in r):
+        href = l.get('href')
+        if href in seen_hrefs:
+            l.decompose()
+        else:
+            seen_hrefs.add(href)
+
+    # 8c. Performance Optimization 2: Defer all scripts to prevent render-blocking
+    for s in soup.find_all('script', src=True):
+        s['defer'] = ''
+
+    # 8d. Performance Optimization 3: Add lazy-loading and async decoding to images
+    for img_tag in soup.find_all('img'):
+        if 'loading' not in img_tag.attrs:
+            img_tag['loading'] = 'lazy'
+        if 'decoding' not in img_tag.attrs:
+            img_tag['decoding'] = 'async'
+
     html = str(soup)
 
     # 9. Slide backgrounds, Cart Badge & Button Layout Overrides in head
@@ -828,6 +879,10 @@ def main():
         t921 = f.read()
     with open('template_1010.html', 'r', encoding='utf-8') as f:
         t1010 = f.read()
+
+    # Strip redundant stylesheet links from templates since all styles are now in css/bundle.min.css
+    t921 = re.sub(r'<link[^>]*rel=[\"\']stylesheet[\"\'][^>]*>', '', t921)
+    t1010 = re.sub(r'<link[^>]*rel=[\"\']stylesheet[\"\'][^>]*>', '', t1010)
 
     templates_and_modals = f'''
 <!-- Template Layout 921 -->
