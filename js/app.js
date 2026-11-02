@@ -603,11 +603,11 @@
                        '  <div class="wd-pd-review-top">' +
                        '    <div>' +
                        '      <span class="wd-pd-reviewer-name">' + rev.name + '</span>' +
-                       '      <span style="display:inline-block; margin-left:8px; color:#16a34a; font-size:12px; font-weight:600;">ভেরিফাইড ক্রেতা ✓</span>' +
+                       '      <span style="display:inline-block; margin-left:8px; color:#16a34a; font-size:12px; font-weight:600;">ভেরিফাইড ক্রেতা</span>' +
                        '    </div>' +
                        '    <span class="wd-pd-review-date">' + rev.date + '</span>' +
                        '  </div>' +
-                       '  <div style="color:#f59e0b; font-size:13px; margin-bottom:6px;">★★★★★</div>' +
+                       '  <div style="color:#f59e0b; font-size:13px; margin-bottom:6px;"><span class="star-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>' +
                        '  <p class="wd-pd-review-text">' + rev.comment + '</p>' +
                        '</div>';
       });
@@ -669,7 +669,7 @@
       '    <h1 class="wd-pd-title">' + product.title + '</h1>' +
 
       '    <div class="wd-pd-rating-row">' +
-      '      <span class="wd-pd-stars">★★★★★</span>' +
+      '      <span class="wd-pd-stars"><span class="star-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</span></span>' +
       '      <span class="wd-pd-reviews-count">(৫.০ রেটিং | ' + (product.reviewsCount || 3) + ' টি ভেরিফাইড রিভিউ)</span>' +
       '    </div>' +
 
@@ -861,7 +861,7 @@
 
       setTimeout(function () {
         btn.classList.add('btn-added-success');
-        btn.innerHTML = 'কার্টে যুক্ত হয়েছে ✓';
+        btn.innerHTML = 'কার্টে যোগ হয়েছে';
 
         setTimeout(function () {
           btn.classList.remove('btn-added-success');
@@ -1007,7 +1007,7 @@
 
     if (cart.length === 0) {
       container.innerHTML = '<div style="padding:60px 25px; text-align:center; color:#64748b;">' +
-                            '  <div style="font-size:48px; margin-bottom:14px; opacity:0.35;">🛒</div>' +
+                            '  <div style="font-size:48px; margin-bottom:14px; opacity:0.35;"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>' +
                             '  <h3 style="font-size:17px; font-weight:700; color:#1e293b; margin-bottom:8px;">আপনার শপিং ব্যাগ খালি রয়েছে</h3>' +
                             '  <p style="font-size:13px; color:#64748b; margin-bottom:20px;">আমাদের ফ্রেশ দেশি খাঁটি পণ্য দেখতে কেনাকাটা শুরু করুন।</p>' +
                             '  <button class="wd-cart-btn-checkout" style="max-width:200px; margin:0 auto;" onclick="window.DeshiMart.closeCartDrawer(); window.scrollTo({top:800, behavior:\'smooth\'});">পণ্য দেখুন</button>' +
@@ -1058,7 +1058,7 @@
                    '      <span class="wd-cart-item-subtotal">৳ ' + (item.price * item.quantity).toLocaleString() + '</span>' +
                    '    </div>' +
                    '  </div>' +
-                   '  <button type="button" class="wd-cart-item-remove" onclick="window.DeshiMart.removeCartItem(' + index + ')" aria-label="Remove">✕</button>' +
+                   '  <button type="button" class="wd-cart-item-remove" onclick="window.DeshiMart.removeCartItem(' + index + ')" aria-label="Remove">&times;</button>' +
                    '</div>';
     });
 
@@ -1486,7 +1486,7 @@
 
       setTimeout(function () {
         btn.classList.add('btn-added-success');
-        btn.innerHTML = 'কার্টে যুক্ত হয়েছে ✓';
+        btn.innerHTML = 'কার্টে যোগ হয়েছে';
 
         setTimeout(function () {
           btn.classList.remove('btn-added-success');

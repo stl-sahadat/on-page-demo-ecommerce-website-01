@@ -1070,30 +1070,36 @@ header.whb-header.whb-sticked {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .wd-pd-main-image {
   max-width: 100%;
   max-height: 320px;
   object-fit: contain;
-  transition: transform 0.3s ease;
+  transition: transform 0.35s ease;
+  position: relative;
+  z-index: 1;
 }
 
-.wd-pd-main-image:hover {
-  transform: scale(1.05);
+.wd-pd-main-image:hover,
+.wd-pd-main-image-wrap:hover .wd-pd-main-image {
+  transform: scale(1.06);
 }
 
 .wd-pd-discount-badge {
   position: absolute;
-  top: 12px;
-  left: 12px;
+  top: 14px;
+  left: 14px;
   background: #ef4444;
   color: #fff;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 4px;
-  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3);
+  padding: 4px 10px;
+  border-radius: 5px;
+  box-shadow: 0 3px 8px rgba(239, 68, 68, 0.4);
+  z-index: 50 !important;
+  pointer-events: none;
 }
 
 .wd-pd-thumbnails {
@@ -1478,7 +1484,7 @@ header.whb-header.whb-sticked {
 }
 
 .wd-pd-features-list li::before {
-  content: "✓";
+  content: "\2713";
   position: absolute;
   left: 0;
   top: 0;

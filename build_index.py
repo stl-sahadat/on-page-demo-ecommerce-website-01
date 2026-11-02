@@ -59,13 +59,9 @@ def main():
 				<div class="wd-loop-prod-price wd-c249a5b6">
 					{price_html}
 				</div>
-				<div class="wp-block-wd-container wd-dir-row wd-39fb7563">
-					<div class="wd-loop-prod-add-to-cart wd-add-to-cart-btn wd-81cb7040 wd-style-default wd-style-icon-text">
-						<a href="javascript:void(0)" onclick="window.DeshiMart.addProductToCartFromCard({pid}, this); return false;" class="button product_type_variable add_to_cart_button" aria-label="Select options for &ldquo;{title}&rdquo;" tabindex="-1"><span>অ্যাড টু কার্ট</span></a>
-					</div>
-					<div class="wd-loop-prod-add-to-cart wd-add-to-cart-btn wd-81cb7040 wd-style-default wd-style-icon-text isl-buy-now">
-						<a href="javascript:void(0)" onclick="window.DeshiMart.quickBuyNow({pid}); return false;" class="button product_type_variable isl-loop-buy-now" aria-label="Buy now &ldquo;{title}&rdquo;" tabindex="-1"><span>অর্ডার করুন</span></a>
-					</div>
+				<div class="product-card-btn-row">
+					<a href="javascript:void(0)" onclick="window.DeshiMart.addProductToCartFromCard({pid}, this); return false;" class="button product_type_variable add_to_cart_button" aria-label="Add to cart" tabindex="-1"><span>অ্যাড টু কার্ট</span></a>
+					<a href="javascript:void(0)" onclick="window.DeshiMart.quickBuyNow({pid}); return false;" class="button product_type_variable isl-loop-buy-now" aria-label="Buy now" tabindex="-1"><span>অর্ডার করুন</span></a>
 				</div>
 			</div>
 		</div>
@@ -106,7 +102,6 @@ def main():
     # 4. Top menu items: ensure Tea is included alongside Dates, Ghee, Honey, Nuts, Oil, Shutki, Spices
     menu = soup.find('ul', id='menu-products-menu')
     if menu:
-        # Check if tea exists
         if not menu.find(lambda el: el.name == 'a' and 'tea' in el.get('href', '').lower()):
             tea_li = soup.new_tag('li', id='menu-item-tea', **{'class': 'menu-item menu-item-type-taxonomy menu-item-object-product_cat item-level-0 menu-simple-dropdown wd-event-hover'})
             tea_a = soup.new_tag('a', href='javascript:void(0)', onclick="window.DeshiMart.scrollToCategory('tea'); return false;", **{'class': 'woodmart-nav-link'})
@@ -127,10 +122,24 @@ def main():
             a['href'] = 'javascript:void(0)'
 
     # 6. Realign Homepage Sections:
-    # 6a. Section 'All Honey/Dates' -> Purely Honey & Dates products!
-    # IDs: 530 (Kalmi Dates), 536 (Sundarbans Honey), 528 (Karkuma Honey), 537 (Maryam Dates), 527 (Dabur Honey), 529 (Khurma Dates)
+    # 6a. Section 'All Homemade Ghee' -> render clean cards
     for h in soup.find_all('h2', class_='elementor-heading-title'):
-        if 'All Honey/Dates' in h.get_text():
+        if 'All Homemade Ghee' in h.get_text():
+            parent = h.find_parent('div', class_='elementor-element')
+            while parent and not parent.find(class_='wd-carousel-wrap'):
+                parent = parent.parent
+            if parent:
+                c_wrap = parent.find(class_='wd-carousel-wrap')
+                if c_wrap:
+                    c_wrap.clear()
+                    ghee_ids = [533, 534, 532, 531, 446, 535, 463]
+                    for idx, pid in enumerate(ghee_ids, 1):
+                        if pid in prod_map:
+                            c_card = BeautifulSoup(render_card_html(prod_map[pid], idx, is_carousel=True), 'html.parser')
+                            c_wrap.append(c_card)
+
+        # 6b. Section 'All Honey/Dates' -> Purely Honey & Dates products!
+        elif 'All Honey/Dates' in h.get_text():
             parent = h.find_parent('div', class_='elementor-element')
             while parent and not parent.find(class_='wd-carousel-wrap'):
                 parent = parent.parent
@@ -144,8 +153,7 @@ def main():
                             c_card = BeautifulSoup(render_card_html(prod_map[pid], idx, is_carousel=True), 'html.parser')
                             c_wrap.append(c_card)
 
-        # 6b. Section 'All Exclusive Products' -> Pure Oils & Exclusive Items!
-        # IDs: 538 (Mustard Oil), 453 (Sesame Oil), 450 (Rose Oil), 541 (Mixed Nuts), 542 (Pumpkin Seeds), 543 (Spices Combo), 459 (Moringa Tea)
+        # 6c. Section 'All Exclusive Products' -> Pure Oils & Exclusive Items!
         elif 'All Exclusive Products' in h.get_text():
             parent = h.find_parent('div', class_='elementor-element')
             while parent and not parent.find(class_='wd-carousel-wrap'):
@@ -160,7 +168,7 @@ def main():
                             c_card = BeautifulSoup(render_card_html(prod_map[pid], idx, is_carousel=True), 'html.parser')
                             c_wrap.append(c_card)
 
-        # 6c. Section 'All Products' -> Add Category Filter Bar and all 25 Products!
+        # 6d. Section 'All Products' -> Add Category Filter Bar and all 25 Products!
         elif 'All Products' in h.get_text():
             parent = h.find_parent('div', class_='elementor-element')
             while parent and not parent.find(class_='products'):
@@ -168,7 +176,6 @@ def main():
             if parent:
                 p_grid = parent.find(class_='products')
                 if p_grid:
-                    # Add filter tabs above the grid if not already present
                     filter_nav_html = '''
 <div class="wd-category-filter-wrap" style="width:100%; margin-bottom:25px;">
   <ul class="wd-category-filter-nav">
@@ -187,12 +194,10 @@ def main():
                     filter_soup = BeautifulSoup(filter_nav_html, 'html.parser')
                     p_grid.insert_before(filter_soup)
 
-                    # Populate grid with all 25 distinct products
                     p_grid.clear()
-                    # Reorder so each category has prime visibility
                     ordered_ids = [
-                        533, 538, 530, 528, 459, 541, 543, 545, # Highlight 1 of each category
-                        534, 453, 536, 537, 458, 542, 544, 546, # Second of each category
+                        533, 538, 530, 528, 459, 541, 543, 545,
+                        534, 453, 536, 537, 458, 542, 544, 546,
                         532, 450, 527, 529, 540, 531, 446, 535, 463
                     ]
                     for idx, pid in enumerate(ordered_ids, 1):
@@ -251,16 +256,16 @@ def main():
 
     html = str(soup)
 
-    # 9. Slide backgrounds, Cart Badge & Category Filter Styling in head
+    # 9. Slide backgrounds, Cart Badge & Button Layout Overrides in head
     extra_slide_style = '''
 <style id="custom-slide-bg-css">
-/* Authentic 100% same-to-same WoodMart Slide Backgrounds */
+/* Authentic WoodMart Slide Backgrounds */
 #slide-106 .wd-slide-bg, #slide-106.woodmart-loaded .wd-slide-bg { background-image:url(./wp-content/uploads/2026/08/banner-4.webp) !important; background-size:cover !important; background-position:center !important; }
 #slide-110 .wd-slide-bg, #slide-110.woodmart-loaded .wd-slide-bg { background-image:url(./wp-content/uploads/2026/08/banner-3.webp) !important; background-size:cover !important; background-position:center !important; }
 #slide-111 .wd-slide-bg, #slide-111.woodmart-loaded .wd-slide-bg { background-image:url(./wp-content/uploads/2026/08/banner-2.webp) !important; background-size:cover !important; background-position:center !important; }
 #slide-361 .wd-slide-bg, #slide-361.woodmart-loaded .wd-slide-bg { background-image:url(./wp-content/uploads/2026/08/banner-1.webp) !important; background-size:cover !important; background-position:center !important; }
 
-/* Pixel Perfect Cart Icon Badge - Matching Image 4 */
+/* Pixel Perfect Cart Icon Badge - Matching User Image */
 .wd-header-cart .wd-tools-count, 
 .whb-col-right .wd-cart-number, 
 .wd-toolbar-cart .wd-tools-count {
@@ -282,6 +287,16 @@ def main():
   box-shadow: 0 2px 5px rgba(245, 114, 36, 0.4) !important;
   z-index: 5 !important;
   transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+/* Cart Badge Bounce Animation */
+.wd-cart-badge-bounce {
+  animation: wdBadgeBounce 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+@keyframes wdBadgeBounce {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.45); }
+  100% { transform: scale(1); }
 }
 
 /* Category Filter Navigation Bar */
@@ -322,16 +337,6 @@ def main():
   box-shadow: 0 3px 8px rgba(120, 162, 6, 0.3) !important;
 }
 
-/* Cart Badge Bounce Animation */
-.wd-cart-badge-bounce {
-  animation: wdBadgeBounce 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-}
-@keyframes wdBadgeBounce {
-  0% { transform: scale(1); }
-  40% { transform: scale(1.45); }
-  100% { transform: scale(1); }
-}
-
 /* Smooth Category Filter Card Animations */
 .wd-product.wd-cat-hidden {
   display: none !important;
@@ -342,6 +347,121 @@ def main():
 @keyframes wdFadeInUp {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================================
+   FIX 1: DISCOUNT BADGE ALWAYS VISIBLE ON HOVER & QUICKVIEW
+======================================================== */
+.wd-pd-main-image-wrap {
+  position: relative !important;
+  overflow: hidden !important;
+}
+.wd-pd-discount-badge {
+  position: absolute !important;
+  top: 14px !important;
+  left: 14px !important;
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  padding: 4px 10px !important;
+  border-radius: 5px !important;
+  box-shadow: 0 3px 8px rgba(239, 68, 68, 0.4) !important;
+  z-index: 999 !important;
+  pointer-events: none !important;
+  display: inline-block !important;
+}
+.wd-pd-main-image {
+  position: relative !important;
+  z-index: 1 !important;
+  transition: transform 0.35s ease !important;
+}
+.wd-pd-main-image:hover,
+.wd-pd-main-image-wrap:hover .wd-pd-main-image {
+  transform: scale(1.06) !important;
+}
+
+.wd-product .wp-block-wd-icon,
+.wd-product .product-labels,
+.wd-product .onsale {
+  position: relative !important;
+  z-index: 20 !important;
+  pointer-events: none !important;
+}
+
+/* ========================================================
+   FIX 2: BUTTON OVERFLOW FIX - 100% CONTAINER CONFINED
+======================================================== */
+.product-card-btn-row,
+.wd-product .product-card-btn-row,
+.wd-product .wd-90eb1c9a,
+.wd-product .wd-39fb7563 {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 6px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  margin-top: 10px !important;
+  padding: 0 !important;
+}
+
+.product-card-btn-row > a,
+.wd-product .product-card-btn-row > a,
+.wd-product .add_to_cart_button,
+.wd-product .isl-loop-buy-now {
+  flex: 1 1 50% !important;
+  width: 50% !important;
+  max-width: 50% !important;
+  min-width: 0 !important;
+  height: 35px !important;
+  min-height: 35px !important;
+  max-height: 35px !important;
+  padding: 0 4px !important;
+  margin: 0 !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  line-height: 33px !important;
+  border-radius: 5px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+}
+
+.wd-product .add_to_cart_button {
+  background: #ffffff !important;
+  color: #f47b20 !important;
+  border: 1.5px solid #f47b20 !important;
+}
+.wd-product .add_to_cart_button:hover {
+  background: #f47b20 !important;
+  color: #ffffff !important;
+}
+
+.wd-product .isl-loop-buy-now {
+  background: #f47b20 !important;
+  color: #ffffff !important;
+  border: 1.5px solid #f47b20 !important;
+}
+.wd-product .isl-loop-buy-now:hover {
+  background: #111827 !important;
+  border-color: #111827 !important;
+  color: #ffffff !important;
+}
+
+/* Remove bulky pseudo-icon that caused text to spill out */
+.isl-loop-buy-now::before {
+  display: none !important;
+  content: "" !important;
 }
 </style>
 '''
@@ -368,7 +488,7 @@ def main():
 <div id="wd-quickview-backdrop" class="wd-modal-backdrop" onclick="window.DeshiMart.closeQuickView()"></div>
 <div id="wd-quickview-modal" class="wd-quickview-popup" role="dialog" aria-modal="true">
   <div class="wd-popup-container">
-    <button class="wd-popup-close-btn" onclick="window.DeshiMart.closeQuickView()" aria-label="Close">✕</button>
+    <button class="wd-popup-close-btn" onclick="window.DeshiMart.closeQuickView()" aria-label="Close">&times;</button>
     <div id="wd-quickview-content"></div>
   </div>
 </div>
@@ -377,7 +497,7 @@ def main():
 <div id="wd-checkout-backdrop" class="wd-modal-backdrop" onclick="window.DeshiMart.closeCheckout()"></div>
 <div id="wd-checkout-modal" class="wd-checkout-popup" role="dialog" aria-modal="true">
   <div class="wd-popup-container wd-checkout-container">
-    <button class="wd-popup-close-btn" onclick="window.DeshiMart.closeCheckout()" aria-label="Close">✕</button>
+    <button class="wd-popup-close-btn" onclick="window.DeshiMart.closeCheckout()" aria-label="Close">&times;</button>
     <div id="wd-checkout-content"></div>
   </div>
 </div>
@@ -404,7 +524,7 @@ def main():
 
     html = html.replace('</body>', templates_and_modals + '\n</body>')
 
-    # 11. Clean any remaining banned emojis
+    # 11. Strict elimination of ALL emojis across html
     for em in ['🔥', '🌿', '🔒', '⚡', '✨', '🛒', '📦', '⭐']:
         html = html.replace(em, '')
 
