@@ -271,6 +271,10 @@ def main():
             buy_btn['href'] = 'javascript:void(0)'
             buy_btn['onclick'] = f'window.DeshiMart.quickBuyNow({pid}); return false;'
 
+    # 7b. Decompose old buggy WoodMart toolbar
+    for tb in soup.find_all('div', class_='wd-toolbar'):
+        tb.decompose()
+
     # 8. Ensure woodmart-loaded class on all slides so backgrounds appear immediately
     for slide in soup.find_all(class_='wd-slide'):
         classes = slide.get('class', [])
@@ -411,6 +415,280 @@ header.whb-header.whb-sticked .whb-header-bottom .whb-flex-row {
 [id],
 .elementor-element {
   scroll-margin-top: 58px !important;
+}
+
+
+/* =========================================================
+   DESKTOP STICKY NAVBAR WITH LOGO
+   ========================================================= */
+#dm-sticky-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid #f1f5f9;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+  display: block;
+}
+#dm-sticky-navbar.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.dm-sticky-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dm-sticky-logo img {
+  height: 38px;
+  width: auto;
+  display: block;
+}
+.dm-sticky-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.dm-sticky-nav-links a {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  text-decoration: none;
+  padding: 6px 4px;
+  transition: color 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.dm-sticky-nav-links a:hover {
+  color: #f57224;
+}
+.dm-sticky-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.dm-sticky-cart-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  color: #1e293b;
+  transition: all 0.2s ease;
+}
+.dm-sticky-cart-btn:hover {
+  background: #fff7ed;
+  border-color: #fdba74;
+  color: #ea580c;
+}
+.dm-sticky-cart-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #f57224;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.dm-sticky-order-cta {
+  background: #f57224;
+  color: #ffffff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+.dm-sticky-order-cta:hover {
+  background: #d85a14;
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   MOBILE STICKY HEADER WITH LOGO
+   ========================================================= */
+#dm-mobile-sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 52px;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid #f1f5f9;
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+#dm-mobile-sticky-header.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.dm-mob-logo img {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+.dm-mob-icon-btn {
+  color: #1e293b !important;
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  outline: none;
+}
+.dm-mob-icon-btn svg {
+  stroke: #1e293b !important;
+  display: block !important;
+  margin: auto !important;
+}
+.dm-mob-icon-btn
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #1e293b;
+  position: relative;
+  cursor: pointer;
+}
+.dm-mob-cart-badge {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  background: #f57224;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* =========================================================
+   MODERN MOBILE BOTTOM NAVIGATION BAR
+   ========================================================= */
+#dm-mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 58px;
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.05);
+  z-index: 99999;
+  display: none;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 4px;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  box-sizing: border-box;
+}
+.dm-bottom-nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  text-decoration: none;
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  padding: 5px 0;
+  transition: color 0.2s ease;
+}
+.dm-bottom-nav-item svg {
+  width: 20px;
+  height: 20px;
+}
+.dm-bottom-nav-item:hover, .dm-bottom-nav-item.active {
+  color: #f57224;
+}
+.dm-bottom-cart-badge {
+  position: absolute;
+  top: 2px;
+  right: calc(50% - 15px);
+  background: #f57224;
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 700;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Hide old buggy WoodMart toolbar */
+.wd-toolbar {
+  display: none !important;
+}
+
+/* Media Query Responsive Visibility */
+@media (max-width: 1024px) {
+  #dm-sticky-navbar {
+    display: none !important;
+  }
+  #dm-mobile-sticky-header {
+    display: flex;
+  }
+  #dm-mobile-bottom-nav {
+    display: flex;
+  }
+  body {
+    padding-bottom: 72px !important;
+  }
+}
+@media (min-width: 1025px) {
+  #dm-mobile-sticky-header {
+    display: none !important;
+  }
+  #dm-mobile-bottom-nav {
+    display: none !important;
+  }
 }
 
 /* Cart Badge Bounce Animation */
@@ -977,6 +1255,74 @@ header.whb-header.whb-sticked .whb-header-bottom .whb-flex-row {
     <button class="button" style="background:var(--wd-primary-color); color:#fff; border:none; padding:12px 24px; border-radius:4px; font-weight:700; cursor:pointer; margin-top:20px; width:100%;" onclick="window.DeshiMart.closeOrderSuccess()">নতুন অর্ডার করুন</button>
   </div>
 </div>
+
+
+<!-- Desktop Sticky Navbar with Logo -->
+<div id="dm-sticky-navbar" class="dm-desktop-sticky">
+  <div class="dm-sticky-inner">
+    <div class="dm-sticky-logo">
+      <a href="#" onclick="window.scrollTo({{top:0, behavior:'smooth'}}); return false;" aria-label="Deshi Mart Home">
+        <img src="./wp-content/uploads/2026/09/logo-1.png" alt="Deshi Mart" width="138" height="40" />
+      </a>
+    </div>
+    <nav class="dm-sticky-nav-links" aria-label="Sticky Category Navigation">
+      <a href="javascript:void(0)" onclick="window.DeshiMart.scrollToCategory('ghee')">Ghee</a>
+      <a href="javascript:void(0)" onclick="window.DeshiMart.scrollToCategory('oil')">Oil</a>
+      <a href="javascript:void(0)" onclick="window.DeshiMart.scrollToCategory('honey')">Honey &amp; Dates</a>
+      <a href="javascript:void(0)" onclick="window.DeshiMart.scrollToCategory('tea')">Tea</a>
+      <a href="javascript:void(0)" onclick="window.DeshiMart.scrollToCategory('nuts')">Nuts</a>
+      <a href="javascript:void(0)" onclick="window.DeshiMart.scrollToCategory('spices')">Spices</a>
+      <a href="javascript:void(0)" onclick="window.DeshiMart.scrollToCategory('shutki')">Shutki</a>
+      <a href="javascript:void(0)" onclick="window.DeshiMart.scrollToCategory('all')">All Products</a>
+    </nav>
+    <div class="dm-sticky-actions">
+      <div class="dm-sticky-cart-btn" onclick="window.DeshiMart.openCheckout();" role="button" tabindex="0" aria-label="View Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        <span class="dm-sticky-cart-count wd-tools-count">0</span>
+      </div>
+      <button class="dm-sticky-order-cta" onclick="window.DeshiMart.openCheckout();" aria-label="Order Now">অর্ডার করুন</button>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile Sticky Header with Logo -->
+<div id="dm-mobile-sticky-header" class="dm-mobile-sticky">
+  <button class="dm-mob-icon-btn" onclick="window.DeshiMart.scrollToCategory('all')" aria-label="Categories">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+  <a href="#" onclick="window.scrollTo({{top:0, behavior:'smooth'}}); return false;" class="dm-mob-logo" aria-label="Deshi Mart Home">
+    <img src="./wp-content/uploads/2026/09/logo-1.png" alt="Deshi Mart" width="120" height="32" />
+  </a>
+  <div class="dm-mob-icon-btn" onclick="window.DeshiMart.openCheckout();" role="button" tabindex="0" aria-label="View Cart">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+    <span class="dm-mob-cart-badge wd-tools-count">0</span>
+  </div>
+</div>
+
+<!-- Modern Mobile Bottom Navigation Bar -->
+<nav id="dm-mobile-bottom-nav" class="dm-bottom-nav" aria-label="Mobile Navigation">
+  <a href="javascript:void(0)" class="dm-bottom-nav-item active" onclick="window.scrollTo({{top:0, behavior:'smooth'}}); return false;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+    <span>হোম</span>
+  </a>
+  <a href="javascript:void(0)" class="dm-bottom-nav-item" onclick="window.DeshiMart.scrollToCategory('all'); return false;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+    <span>ক্যাটাগরি</span>
+  </a>
+  <a href="javascript:void(0)" class="dm-bottom-nav-item dm-bottom-cart-item" onclick="window.DeshiMart.openCheckout(); return false;">
+    <span class="dm-bottom-cart-badge wd-tools-count">0</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+    <span>কার্ট</span>
+  </a>
+  <a href="https://wa.me/8801911125266" target="_blank" rel="noopener noreferrer" class="dm-bottom-nav-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+    <span>হোয়াটসঅ্যাপ</span>
+  </a>
+  <a href="tel:01911125266" class="dm-bottom-nav-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+    <span>কল করুন</span>
+  </a>
+</nav>
 
 <script src="js/products-data.js"></script>
 <script src="js/app.js"></script>

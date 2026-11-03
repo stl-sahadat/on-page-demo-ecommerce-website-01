@@ -58,7 +58,7 @@
     var subtotal = getCartSubtotal();
 
     // Header count badges
-    var headerCounts = document.querySelectorAll('.wd-header-cart .wd-tools-count, .whb-col-right .wd-cart-number, .wd-toolbar-cart .wd-tools-count');
+    var headerCounts = document.querySelectorAll('.wd-header-cart .wd-tools-count, .whb-col-right .wd-cart-number, .wd-toolbar-cart .wd-tools-count, .dm-sticky-cart-count, .dm-mob-cart-badge, .dm-bottom-cart-badge');
     headerCounts.forEach(function (el) {
       el.textContent = count;
     });
@@ -328,16 +328,19 @@
     }
   }
 
-  // --- Sticky Header ---
+  // --- Sticky Header (Desktop & Mobile with Logo) ---
   function initStickyHeader() {
-    var header = document.querySelector('header.whb-header');
-    if (!header) return;
+    var deskNav = document.getElementById('dm-sticky-navbar');
+    var mobNav = document.getElementById('dm-mobile-sticky-header');
 
     window.addEventListener('scroll', function () {
-      if (window.scrollY > 120) {
-        header.classList.add('whb-sticked');
+      var scrollY = window.scrollY || window.pageYOffset;
+      if (scrollY > 100) {
+        if (deskNav) deskNav.classList.add('is-visible');
+        if (mobNav) mobNav.classList.add('is-visible');
       } else {
-        header.classList.remove('whb-sticked');
+        if (deskNav) deskNav.classList.remove('is-visible');
+        if (mobNav) mobNav.classList.remove('is-visible');
       }
     }, { passive: true });
   }
@@ -936,7 +939,7 @@
   }
 
   function triggerCartBadgeBounce() {
-    var headerCounts = document.querySelectorAll('.wd-header-cart .wd-tools-count, .whb-col-right .wd-cart-number, .wd-toolbar-cart .wd-tools-count');
+    var headerCounts = document.querySelectorAll('.wd-header-cart .wd-tools-count, .whb-col-right .wd-cart-number, .wd-toolbar-cart .wd-tools-count, .dm-sticky-cart-count, .dm-mob-cart-badge, .dm-bottom-cart-badge');
     headerCounts.forEach(function (el) {
       el.classList.remove('wd-cart-badge-bounce');
       void el.offsetWidth; // trigger reflow
