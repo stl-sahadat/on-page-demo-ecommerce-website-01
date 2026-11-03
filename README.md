@@ -2,7 +2,7 @@
 
 **অন পেজ ডেমো ই-কমার্স ওয়েবসাইট 01** হলো একটি আধুনিক, উচ্চ কনভার্সন-বান্ধব এবং সম্পূর্ণ রেসপনসিভ বাংলাদেশি ওয়ান-পেজ অর্গানিক গ্রোসারি ই-কমার্স ফ্রন্টএন্ড ওয়েব অ্যাপ্লিকেশন। এটি মূলত ফেসবুক কমার্স (F-Commerce), ডিটুসি (Direct-to-Consumer) উদ্যোক্তা এবং অনলাইন শপ ওনারদের জন্য ডিজাইন করা হয়েছে।
 
-- **ক্লাউডফ্লেয়ার লাইভ প্রিভিউ (Cloudflare Live Server):** https://cet-vintage-mods-rankings.trycloudflare.com
+- **ক্লাউডফ্লেয়ার লাইভ প্রিভিউ (Cloudflare Live Server):** https://gourmet-designers-route-finances.trycloudflare.com
 - **গিটহাব রিপোজিটরি (GitHub Repository):** https://github.com/stl-sahadat/on-page-demo-ecommerce-website-01
 - **ডেভেলপার প্রোফাইল:** মো. শাহাদাত হোসেন (Md Sahadat Hossain) | GitHub: [@stl-sahadat](https://github.com/stl-sahadat)
 
