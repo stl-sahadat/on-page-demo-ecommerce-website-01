@@ -1593,6 +1593,60 @@
     }
   }
 
+  function openMobileMenu() {
+    var nav = document.querySelector('.wd-side-hidden-nav');
+    var closeSide = document.querySelector('.wd-close-side');
+    if (nav) nav.classList.add('wd-opened');
+    if (closeSide) closeSide.classList.add('wd-close-side-opened');
+  }
+
+  function closeMobileMenu() {
+    var nav = document.querySelector('.wd-side-hidden-nav');
+    var closeSide = document.querySelector('.wd-close-side');
+    if (nav) nav.classList.remove('wd-opened');
+    if (closeSide) closeSide.classList.remove('wd-close-side-opened');
+  }
+
+  function openSearch() {
+    var nav = document.querySelector('.wd-side-hidden-nav');
+    var mobSearch = document.querySelector('.mobile-nav .searchform input[name="s"], .mobile-nav input[type="text"]');
+    var closeSide = document.querySelector('.wd-close-side');
+    if (nav && mobSearch) {
+      nav.classList.add('wd-opened');
+      if (closeSide) closeSide.classList.add('wd-close-side-opened');
+      setTimeout(function () {
+        mobSearch.focus();
+      }, 250);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      var headerSearch = document.querySelector('.searchform input[type="text"], .s');
+      if (headerSearch) {
+        setTimeout(function () { headerSearch.focus(); }, 350);
+      }
+    }
+  }
+
+  function openProfile() {
+    var d = document.querySelector('.login-form-side');
+    var form = d ? d.querySelector('form.login') : null;
+    var closeSide = document.querySelector('.wd-close-side');
+    if (d) {
+      d.classList.add('wd-opened');
+      if (form) {
+        form.style.display = 'block';
+        form.classList.remove('hidden-form');
+      }
+    }
+    if (closeSide) closeSide.classList.add('wd-close-side-opened');
+  }
+
+  function closeProfile() {
+    var d = document.querySelector('.login-form-side');
+    var closeSide = document.querySelector('.wd-close-side');
+    if (d) d.classList.remove('wd-opened');
+    if (closeSide) closeSide.classList.remove('wd-close-side-opened');
+  }
+
   // Export to window
   window.DeshiMart = {
     applyCoupon: applyCoupon,
@@ -1618,7 +1672,12 @@
     submitOrder: submitOrder,
     closeOrderSuccess: closeOrderSuccess,
     scrollToCategory: scrollToCategory,
-    filterCategory: filterCategory
+    filterCategory: filterCategory,
+    openMobileMenu: openMobileMenu,
+    closeMobileMenu: closeMobileMenu,
+    openSearch: openSearch,
+    openProfile: openProfile,
+    closeProfile: closeProfile
   };
 
   document.addEventListener('DOMContentLoaded', function () {
