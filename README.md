@@ -2,8 +2,9 @@
 
 **অন পেজ ডেমো ই-কমার্স ওয়েবসাইট 01** হলো একটি আধুনিক, উচ্চ কনভার্সন-বান্ধব এবং সম্পূর্ণ রেসপনসিভ বাংলাদেশি ওয়ান-পেজ অর্গানিক গ্রোসারি ই-কমার্স ফ্রন্টএন্ড ওয়েব অ্যাপ্লিকেশন। এটি মূলত ফেসবুক কমার্স (F-Commerce), ডিটুসি (Direct-to-Consumer) উদ্যোক্তা এবং অনলাইন শপ ওনারদের জন্য ডিজাইন করা হয়েছে।
 
-- **২৪/৭ স্থায়ী লাইভ প্রিভিউ (Permanent Production Live Link):** https://on-page-demo-ecommerce-website-01.vercel.app
-- **ক্লাউডফ্লেয়ার লাইভ টানেল (Cloudflare Live Tunnel):** https://rotation-skip-tear-personally.trycloudflare.com
+- **ক্লাউডফ্লেয়ার পেজেস লাইভ লিংক (Cloudflare Pages Production):** https://deshimart-ecommerce.pages.dev
+- **ক্লাউডফ্লেয়ার ওয়ার্কার্স লাইভ লিংক (Cloudflare Workers Production):** https://on-page-demo-ecommerce-website-01.on-page-demo-ecommerce-website-01.workers.dev
+- **২৪/৭ স্থায়ী লাইভ প্রিভিউ (Vercel Production Link):** https://on-page-demo-ecommerce-website-01.vercel.app
 - **গিটহাব রিপোজিটরি (GitHub Repository):** https://github.com/stl-sahadat/on-page-demo-ecommerce-website-01
 - **ডেভেলপার প্রোফাইল:** মো. শাহাদাত হোসেন (Md Sahadat Hossain) | GitHub: [@stl-sahadat](https://github.com/stl-sahadat)
 
