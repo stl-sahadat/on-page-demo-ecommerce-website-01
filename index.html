@@ -1264,7 +1264,7 @@ header.whb-header.whb-sticked .whb-header-bottom .whb-flex-row {
   }
   .product-card.wd-custom-card-fixed,
   .product-card {
-    min-height: 255px !important;
+    min-height: 285px !important;
     padding: 8px 6px 8px 6px !important;
   }
   .wd-loop-prod-thumb {
@@ -1294,17 +1294,47 @@ header.whb-header.whb-sticked .whb-header-bottom .whb-flex-row {
     font-size: 11px !important;
     margin-bottom: 6px !important;
   }
-  .product-card-btn-row {
-    gap: 4px !important;
+  .product-card-btn-row,
+  .wd-product .product-card-btn-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 5px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 6px !important;
   }
-  .product-card-btn-row > a {
+  .product-card-btn-row > a,
+  .wd-product .product-card-btn-row > a,
+  .wd-product .add_to_cart_button,
+  .wd-product .isl-loop-buy-now {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 1 1 100% !important;
     height: 28px !important;
     min-height: 28px !important;
     max-height: 28px !important;
-    font-size: 10px !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
     line-height: 26px !important;
-    padding: 0 2px !important;
+    padding: 0 4px !important;
     border-radius: 4px !important;
+    box-sizing: border-box !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    text-align: center !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .product-card-btn-row > a > span {
+    display: inline-block !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    font-size: 11px !important;
+    line-height: 1 !important;
   }
   .wd-card-badge-pill {
     font-size: 9px !important;
